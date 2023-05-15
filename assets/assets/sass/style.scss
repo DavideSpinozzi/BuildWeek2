@@ -97,3 +97,14 @@ body {
   .sidebarRxIcons{
     color: #585858;
   }
+  #songContainer {
+    background-color: black;
+    display: flex;
+  }
+  .playListSongImage {
+    height: 4em;
+    width: 4em;
+  }
+  .favouriteSongImage {
+    width: 100%;
+  }
