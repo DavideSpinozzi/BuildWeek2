@@ -131,6 +131,9 @@ body {
     position: fixed;
     bottom: 0;
   }
+}
+
+
 #songContainer {
   background-color: black;
   display: flex;
@@ -144,4 +147,3 @@ body {
 .favouriteSongImage {
   width: 100%;
 }/*# sourceMappingURL=style.css.map */
-}
