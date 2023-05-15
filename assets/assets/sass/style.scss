@@ -97,3 +97,36 @@ body {
   .sidebarRxIcons{
     color: #585858;
   }
+  .sidebarRx{
+    height: 100vh
+  }
+  .sidebarRx .bg-black{
+    height: 100%;
+  }
+  @media (max-width: 766px){
+
+  #Navbar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    
+    div{
+        width: 33.3%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 !important;
+        svg{
+            margin: 0 !important;
+
+        }
+    }
+  }
+  .NavbarContainer{
+    padding: 0 !important;
+    width: 100% !important;
+    position: fixed;
+    bottom: 0;
+  }
+}
