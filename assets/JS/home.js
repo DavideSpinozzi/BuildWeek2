@@ -34,7 +34,6 @@ const playlistNames = [
 ];
 /**Costanti */
 const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=web";
-
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
