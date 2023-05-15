@@ -69,4 +69,29 @@
 body{
   font-family: "Circular";
 }
->>>>>>> 7d15186d0632dabdb187946c1b6708e5c27fad2e
+.playlistSalvate{
+  overflow-y: auto;
+  max-height: 300px;
+}
+.playlistSalvate::-webkit-scrollbar {
+  width: 10px; /* Modifica la larghezza della scrollbar */
+}
+
+.playlistSalvate::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.playlistSalvate::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.playlistSalvate::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.playlistSalvate p{
+  white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    color: white;
+  
+}
