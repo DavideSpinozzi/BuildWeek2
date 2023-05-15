@@ -34,8 +34,7 @@ const playlistNames = [
 ];
 /**Costanti */
 const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=web";
-const apiKey =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVkOGIyZjg4Zjc0MDAwMTQyODc0MTAiLCJpYXQiOjE2ODM4NTIwNzksImV4cCI6MTY4NTA2MTY3OX0.jxr2SpjKDwYilHZUG0JnZh5qIm_u-JJT1fxbaoO36aM";
+
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
@@ -61,9 +60,6 @@ function displayPlayList(items) {
 const fetchAndDisplay = function () {
   fetch(url, {
     method: "GET",
-    headers: {
-      Authorization: apiKey,
-    },
   })
     .then((raw) => {
       return raw.json();
@@ -218,7 +214,7 @@ function displayFavouriteSongs(songs) {
       const playListSongDiv = document.createElement("div");
       playListSongDiv.classList.add("col-12", "col-lg", "d-flex", 'd-lg-block');
       const songImage = document.createElement("img");
-      songImage.src = song.album.cover_small;
+      songImage.src = song.album.cover_medium;
       songImage.alt = song.title_short;
       songImage.classList.add("favouriteSongImage");
   
