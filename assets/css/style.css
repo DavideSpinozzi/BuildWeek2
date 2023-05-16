@@ -64,6 +64,10 @@
   font-weight: 900;
   font-style: italic;
 }
+p {
+  font-size: 0.8rem;
+}
+
 body {
   font-family: "Circular";
 }
@@ -143,6 +147,9 @@ body {
   #songContainer {
     display: none !important;
   }
+  .barraUtente {
+    display: none !important;
+  }
 }
 #songContainer {
   background-color: black;
@@ -156,4 +163,12 @@ body {
 
 .favouriteSongImage {
   width: 100%;
+}
+
+.barraUtente {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
 }/*# sourceMappingURL=style.css.map */
