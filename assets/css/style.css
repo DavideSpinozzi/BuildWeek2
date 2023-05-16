@@ -218,11 +218,11 @@ button:hover {
   flex-direction: column;
   font-size: 0.8em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .songInfoDiv p {
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playListCard {
@@ -250,7 +250,8 @@ button:hover {
 }
 
 .mainSongCard {
-  background-color: black;
+  background: linear-gradient(20deg, black, #121212);
+  border: none;
   color: white;
 }
 .mainSongCard p:hover,
@@ -270,6 +271,12 @@ button:hover {
 }
 .mainSongInfoDiv p {
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mainSongInfoDiv h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playListRow {
@@ -291,11 +298,11 @@ button:hover {
   font-size: 1.2em;
   font-weight: 700;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .favSongInfoDiv p {
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .favSongInfoDiv .favSongName {
   font-size: 2em;
