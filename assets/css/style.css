@@ -89,7 +89,7 @@ body {
   background: #555;
 }
 
-.playlistSalvate  p {
+.playlistSalvate p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +122,7 @@ body {
     align-items: center;
     margin: 0 !important;
   }
-  #Navbar div svg {
+  #Navbar div #NavBar div svg {
     margin: 0 !important;
   }
   .NavbarContainer {
@@ -132,8 +132,6 @@ body {
     bottom: 0;
   }
 }
-
-
 #songContainer {
   background-color: black;
   display: flex;
@@ -145,5 +143,7 @@ body {
 }
 
 .favouriteSongImage {
-  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 1/1;
 }/*# sourceMappingURL=style.css.map */

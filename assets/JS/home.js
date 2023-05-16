@@ -37,6 +37,7 @@ const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=pop";
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
+const favouriteContainer2 = document.getElementById("favouriteContainer2");
 
 const indexArray = [];
 console.log(indexArray);
@@ -68,7 +69,8 @@ const fetchAndDisplay = function () {
       console.log(dati.data);
       displaySong(dati.data);
       displayPlayListSongs(dati.data);
-      displayFavouriteSongs(dati.data)
+      displayFavouriteSongs1(dati.data)
+      displayFavouriteSongs2(dati.data)
     });
 };
 
@@ -87,6 +89,7 @@ function displaySong(songs) {
   const albumAnchor = document.createElement("a");
   const albumName = document.createElement("p");
   albumName.textContent = song.album.title;
+  albumAnchor.href = './album.html?songId='+ song.id;
 
   const songName = document.createElement("h1");
   songName.textContent = song.title;
@@ -163,7 +166,7 @@ function displayPlayListSongs(songs) {
   currentIndex.forEach((index) => {
     const song = songs[index];
     const playListSongDiv = document.createElement("div");
-    playListSongDiv.classList.add("col-6", "col-lg-4", "d-flex");
+    playListSongDiv.classList.add("col-6", "col-md-4", "d-flex");
     const songImage = document.createElement("img");
     songImage.src = song.album.cover_small;
     songImage.alt = song.title_short;
@@ -174,6 +177,8 @@ function displayPlayListSongs(songs) {
     const albumAnchor = document.createElement("a");
     const albumName = document.createElement("p");
     albumName.textContent = song.album.title;
+    albumAnchor.href = './album.html?songId='+ song.id;
+
 
     const songName = document.createElement("p");
     songName.textContent = song.title;
@@ -193,7 +198,9 @@ function displayPlayListSongs(songs) {
     playListContainer.appendChild(playListSongDiv);
   });
 }
-function displayFavouriteSongs(songs) {
+
+/**Funzione display favourite songs */
+function displayFavouriteSongs1(songs) {
     const currentIndex = [];
     while (currentIndex.length < 5) {
       const randomIndex = Math.floor(Math.random() * songs.length);
@@ -212,7 +219,7 @@ function displayFavouriteSongs(songs) {
     currentIndex.forEach((index) => {
       const song = songs[index];
       const playListSongDiv = document.createElement("div");
-      playListSongDiv.classList.add("col-12", "col-lg", "d-flex", 'd-lg-block');
+      playListSongDiv.classList.add("col-12", "col-md", "d-flex", 'd-md-block');
       const songImage = document.createElement("img");
       songImage.src = song.album.cover_medium;
       songImage.alt = song.title_short;
@@ -223,6 +230,7 @@ function displayFavouriteSongs(songs) {
       const albumAnchor = document.createElement("a");
       const albumName = document.createElement("p");
       albumName.textContent = song.album.title;
+      albumAnchor.href = './album.html?songId='+ song.id;
   
       const songName = document.createElement("p");
       songName.textContent = song.title;
@@ -240,5 +248,55 @@ function displayFavouriteSongs(songs) {
       artistAnchor.appendChild(artistName);
   
       favouriteContainer.appendChild(playListSongDiv);
+    });
+  }
+  function displayFavouriteSongs2(songs) {
+    const currentIndex = [];
+    while (currentIndex.length < 5) {
+      const randomIndex = Math.floor(Math.random() * songs.length);
+      let isIndexUnique = true;
+      for (let i = 0; i < indexArray.length; i++) {
+        if (indexArray[i] === randomIndex) {
+          isIndexUnique = false;
+          break;
+        }
+      }
+      if (isIndexUnique) {
+        indexArray.push(randomIndex);
+        currentIndex.push(randomIndex);
+      }
+    }
+    currentIndex.forEach((index) => {
+      const song = songs[index];
+      const playListSongDiv = document.createElement("div");
+      playListSongDiv.classList.add("col-12", "col-md", "d-flex", 'd-md-block');
+      const songImage = document.createElement("img");
+      songImage.src = song.album.cover_medium;
+      songImage.alt = song.title_short;
+      songImage.classList.add("favouriteSongImage");
+  
+      const songInfoDiv = document.createElement("div");
+  
+      const albumAnchor = document.createElement("a");
+      const albumName = document.createElement("p");
+      albumName.textContent = song.album.title;
+      albumAnchor.href = './album.html?songId='+ song.id;
+  
+      const songName = document.createElement("p");
+      songName.textContent = song.title;
+  
+      const artistAnchor = document.createElement("a");
+      const artistName = document.createElement("p");
+      artistName.textContent = song.artist.name;
+  
+      playListSongDiv.appendChild(songImage);
+      playListSongDiv.appendChild(songInfoDiv);
+      songInfoDiv.appendChild(albumAnchor);
+      albumAnchor.appendChild(albumName);
+      songInfoDiv.appendChild(songName);
+      songInfoDiv.appendChild(artistAnchor);
+      artistAnchor.appendChild(artistName);
+  
+      favouriteContainer2.appendChild(playListSongDiv);
     });
   }
