@@ -87,7 +87,7 @@ function displaySong(songs) {
   const albumAnchor = document.createElement("a");
   const albumName = document.createElement("p");
   albumName.textContent = song.album.title;
-
+  albumAnchor.href = './album.html?albumId='+ song.album.id;
   const songName = document.createElement("h1");
   songName.textContent = song.title;
 
