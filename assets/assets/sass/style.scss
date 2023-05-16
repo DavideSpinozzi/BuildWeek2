@@ -64,13 +64,20 @@
     font-weight: 900;
     font-style: italic;
   }
-  
+
 body {
     font-family: "Circular";
 }
+.MainContent{
+  height: 100vh;
+  overflow-y: auto;
+}
+.NavbarContainer{
+  height: 100vh;
+}
   .playlistSalvate{
-    overflow-y: auto;
-  height: 61vh;
+    overflow-y: auto ;
+    max-height: 50%;
   }
   .playlistSalvate::-webkit-scrollbar {
     width: 10px;
@@ -97,9 +104,9 @@ body {
   .sidebarRxIcons{
     color: #585858;
   }
-  .sidebarRx{
-    height: 100vh
-  }
+ .sidebarRx{
+  height: 100vh;
+ }
   .sidebarRx .bg-black{
     height: 100%;
   }
@@ -117,7 +124,7 @@ body {
         flex-direction: column;
         align-items: center;
         margin: 0 !important;
-        #NavBar div svg{
+        #NavBar, div, svg{
             margin: 0 !important;
 
         }
@@ -128,6 +135,10 @@ body {
     width: 100% !important;
     position: fixed;
     bottom: 0;
+    height: 8%;
+  }
+  #songContainer{
+    display: none !important;
   }
 }
   #songContainer {
