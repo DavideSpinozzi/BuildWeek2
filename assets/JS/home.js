@@ -33,7 +33,7 @@ const playlistNames = [
   "ma(ncanza) che cazzo ne so io (gen-feb 2021)",
 ];
 /**Costanti */
-const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=web";
+const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=pop";
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
@@ -59,6 +59,7 @@ function displayPlayList(items) {
 const fetchAndDisplay = function () {
   fetch(url, {
     method: "GET",
+
   })
     .then((raw) => {
       return raw.json();
@@ -73,7 +74,7 @@ const fetchAndDisplay = function () {
 
 /**Funzione display main song */
 function displaySong(songs) {
-  const randomSong = Math.round(Math.random() * songs.length);
+  const randomSong = Math.floor(Math.random() * songs.length);
   const song = songs[randomSong];
   indexArray.push(randomSong);
 
@@ -146,7 +147,7 @@ function displaySong(songs) {
 function displayPlayListSongs(songs) {
   const currentIndex = [];
   while (currentIndex.length < 6) {
-    const randomIndex = Math.round(Math.random() * songs.length);
+    const randomIndex = Math.floor(Math.random() * songs.length);
     let isIndexUnique = true;
     for (let i = 0; i < indexArray.length; i++) {
       if (indexArray[i] === randomIndex) {
@@ -195,7 +196,7 @@ function displayPlayListSongs(songs) {
 function displayFavouriteSongs(songs) {
     const currentIndex = [];
     while (currentIndex.length < 5) {
-      const randomIndex = Math.round(Math.random() * songs.length);
+      const randomIndex = Math.floor(Math.random() * songs.length);
       let isIndexUnique = true;
       for (let i = 0; i < indexArray.length; i++) {
         if (indexArray[i] === randomIndex) {
@@ -213,7 +214,7 @@ function displayFavouriteSongs(songs) {
       const playListSongDiv = document.createElement("div");
       playListSongDiv.classList.add("col-12", "col-lg", "d-flex", 'd-lg-block');
       const songImage = document.createElement("img");
-      songImage.src = song.album.cover_small;
+      songImage.src = song.album.cover_medium;
       songImage.alt = song.title_short;
       songImage.classList.add("favouriteSongImage");
   
