@@ -8,5 +8,13 @@
 body {
     font-family: "Circular";
 }
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  font-weight: 700;
+  color: gray;
+}
 
   
