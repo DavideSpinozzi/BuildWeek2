@@ -64,17 +64,13 @@
   font-weight: 900;
   font-style: italic;
 }
-body {
-  font-family: "Circular";
-}
-
 .MainContent {
   height: 100vh;
   overflow-y: auto;
 }
 
 .NavbarContainer {
-  height: 100vh;
+  max-height: 100vh;
 }
 
 .playlistSalvate {
@@ -135,11 +131,10 @@ body {
     margin: 0 !important;
   }
   .NavbarContainer {
-    padding: 0 !important;
+    padding: 0rem !important;
     width: 100% !important;
     position: fixed;
     bottom: 0;
-    height: 8%;
   }
   #songContainer {
     display: none !important;
@@ -156,6 +151,9 @@ body {
 }
 
 .favouriteSongImage {
-  object-fit: cover;
-  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+body {
+  font-family: "Circular";
 }/*# sourceMappingURL=style.css.map */
