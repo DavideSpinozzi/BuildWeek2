@@ -74,14 +74,8 @@ async function fetchTracks(url){
     }
     
 }
-async function fetchData() {
-  try {
-    await fetchTracks(apiUrl);
-    /////creare i p qui
-  } catch (error) {
-    console.log('bestemmie fortissime', error);
-  }
-}
+fetchTracks(apiUrl)
+.then(()=>{console.log(tracks)})
 
-fetchData();
+.catch((error)=>{console.log(error)})
 }
