@@ -74,12 +74,14 @@ async function fetchTracks(url){
     }
     
 }
-fetchTracks(apiUrl)
-.then(()=>{
-  
-    
-})
-.catch((error)=>{
-    console.log('tante bestemmie', error)
-})
+async function fetchData() {
+  try {
+    await fetchTracks(apiUrl);
+    /////creare i p qui
+  } catch (error) {
+    console.log('Errore durante la richiesta API:', error);
+  }
+}
+
+fetchData();
 }
