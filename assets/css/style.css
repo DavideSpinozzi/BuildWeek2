@@ -68,9 +68,18 @@ body {
   font-family: "Circular";
 }
 
+.MainContent {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.NavbarContainer {
+  height: 100vh;
+}
+
 .playlistSalvate {
   overflow-y: auto;
-  height: 61vh;
+  max-height: 50%;
 }
 
 .playlistSalvate::-webkit-scrollbar {
@@ -89,7 +98,7 @@ body {
   background: #555;
 }
 
-.playlistSalvate  p {
+.playlistSalvate p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +131,7 @@ body {
     align-items: center;
     margin: 0 !important;
   }
-  #Navbar div svg {
+  #Navbar div #NavBar, #Navbar div div, #Navbar div svg {
     margin: 0 !important;
   }
   .NavbarContainer {
@@ -130,10 +139,12 @@ body {
     width: 100% !important;
     position: fixed;
     bottom: 0;
+    height: 8%;
+  }
+  #songContainer {
+    display: none !important;
   }
 }
-
-
 #songContainer {
   background-color: black;
   display: flex;
@@ -145,5 +156,6 @@ body {
 }
 
 .favouriteSongImage {
-  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
 }/*# sourceMappingURL=style.css.map */
