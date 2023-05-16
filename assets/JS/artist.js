@@ -79,7 +79,7 @@ async function fetchData() {
     await fetchTracks(apiUrl);
     /////creare i p qui
   } catch (error) {
-    console.log('Errore durante la richiesta API:', error);
+    console.log('bestemmie fortissime', error);
   }
 }
 
