@@ -70,7 +70,7 @@ const fetchAndDisplay = function () {
       displaySong(dati.data);
       displayPlayListSongs(dati.data);
       displayFavouriteSongs1(dati.data)
-      displayFavouriteSongs2(dati.data)
+      displayFavouriteSongs2(dati.data);
     });
 };
 
@@ -89,7 +89,7 @@ function displaySong(songs) {
   const albumAnchor = document.createElement("a");
   const albumName = document.createElement("p");
   albumName.textContent = song.album.title;
-  albumAnchor.href = './album.html?songId='+ song.id;
+  albumAnchor.href = './album.html?albumId='+ song.album.id;
 
   const songName = document.createElement("h1");
   songName.textContent = song.title;
@@ -97,6 +97,7 @@ function displaySong(songs) {
   const artistAnchor = document.createElement("a");
   const artistName = document.createElement("p");
   artistName.textContent = song.artist.name;
+  artistAnchor.href = './artist.html?artistId=' + song.artist.id;
 
   const spamSong = document.createElement("p");
   spamSong.textContent = "Ascolta il nuovo singolo di " + song.artist.name;
@@ -177,7 +178,7 @@ function displayPlayListSongs(songs) {
     const albumAnchor = document.createElement("a");
     const albumName = document.createElement("p");
     albumName.textContent = song.album.title;
-    albumAnchor.href = './album.html?songId='+ song.id;
+    albumAnchor.href = './album.html?albumId='+ song.album.id;
 
 
     const songName = document.createElement("p");
@@ -186,6 +187,7 @@ function displayPlayListSongs(songs) {
     const artistAnchor = document.createElement("a");
     const artistName = document.createElement("p");
     artistName.textContent = song.artist.name;
+    artistAnchor.href = './artist.html?artistId=' + song.artist.id;
 
     playListSongDiv.appendChild(songImage);
     playListSongDiv.appendChild(songInfoDiv);
@@ -230,7 +232,7 @@ function displayFavouriteSongs1(songs) {
       const albumAnchor = document.createElement("a");
       const albumName = document.createElement("p");
       albumName.textContent = song.album.title;
-      albumAnchor.href = './album.html?songId='+ song.id;
+      albumAnchor.href = './album.html?albumId='+ song.album.id;
   
       const songName = document.createElement("p");
       songName.textContent = song.title;
@@ -238,6 +240,7 @@ function displayFavouriteSongs1(songs) {
       const artistAnchor = document.createElement("a");
       const artistName = document.createElement("p");
       artistName.textContent = song.artist.name;
+      artistAnchor.href = './artist.html?artistId=' + song.artist.id;
   
       playListSongDiv.appendChild(songImage);
       playListSongDiv.appendChild(songInfoDiv);
@@ -280,7 +283,7 @@ function displayFavouriteSongs1(songs) {
       const albumAnchor = document.createElement("a");
       const albumName = document.createElement("p");
       albumName.textContent = song.album.title;
-      albumAnchor.href = './album.html?songId='+ song.id;
+      albumAnchor.href = './album.html?albumId='+ song.album.id;
   
       const songName = document.createElement("p");
       songName.textContent = song.title;
@@ -288,6 +291,7 @@ function displayFavouriteSongs1(songs) {
       const artistAnchor = document.createElement("a");
       const artistName = document.createElement("p");
       artistName.textContent = song.artist.name;
+      artistAnchor.href = './artist.html?artistId=' + song.artist.id;
   
       playListSongDiv.appendChild(songImage);
       playListSongDiv.appendChild(songInfoDiv);
