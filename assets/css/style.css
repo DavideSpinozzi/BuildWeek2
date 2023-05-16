@@ -64,10 +64,6 @@
   font-weight: 900;
   font-style: italic;
 }
-body {
-  font-family: "Circular";
-}
-
 .MainContent {
   height: 100vh;
   overflow-y: auto;
@@ -135,7 +131,7 @@ body {
     margin: 0 !important;
   }
   .NavbarContainer {
-    padding: 0 !important;
+    padding: 0rem !important;
     width: 100% !important;
     position: fixed;
     bottom: 0;
@@ -156,4 +152,8 @@ body {
 
 .favouriteSongImage {
   width: 100%;
+}
+
+body {
+  font-family: "Circular";
 }/*# sourceMappingURL=style.css.map */
