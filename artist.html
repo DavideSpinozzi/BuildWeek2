@@ -13,7 +13,7 @@
 
 <body>
   <div class="row m-0 main">
-    <div class="col-md-3 col-12 bg-black NavbarContainer">
+    <div class="col-md-2 col-12 bg-black NavbarContainer">
       <div class="p-3">
         <div class="dropdown mb-3 d-none d-md-block">
           <svg href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@
         </div>
         <!---->
         <nav id="Navbar">
-          <div class="d-flex my-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+          <div class="d-flex my-3 text-white" onclick="goHome()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
               fill="currentColor" class="bi bi-house-door-fill me-3" viewBox="0 0 16 16">
               <path
                 d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
@@ -84,13 +84,13 @@
       </div>
 
     </div>
-    <div class="col-12 col-md-7 text-white bg-dark MainContent">
+    <div class="col-12 col-md-10 col-lg-8 text-white bg-dark MainContent p-0 pb-5">
         <div class="barraUtente py-3">
-            <div>
-              <a href=""><svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z"/></svg></a>
-              <a href=""><svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z"/></svg></a>
+            <div class="ps-2">
+              <svg xmlns="http://www.w3.org/2000/svg" onclick="goBack()" width='30' height="30" class="ionicon frecciaSinistra" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon opacity-50 frecciaDestra" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z"/></svg> 
               </div>
-              <div class="dropdown">
+              <div class="dropdown profilo">
               <button type="button" class="rounded-5 btn bg-black text-white ps-0 py-0 dropdown-toggle" data-bs-toggle="dropdown">
                 <img src="assets/imgs/friends/awdawd.jpg" alt="gatto1" width="25" height="25"
                 class="rounded-circle me-2">Paperino</button>
@@ -102,7 +102,7 @@
               </div>
         </div>
     </div>
-  <div class="col-2 p-0 sidebarRx d-none d-md-block">
+  <div class="col-2 p-0 sidebarRx d-none d-lg-block">
     <div class="px-4 bg-black pt-4">
       <div class="d-flex justify-content-between text-white align-items-center mb-3">Attivita amici <div
           class="sidebarRxIcons"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
