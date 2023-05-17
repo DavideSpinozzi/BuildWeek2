@@ -67,11 +67,17 @@
 .NavbarContainer {
   max-height: 100vh;
   z-index: 1;
+  opacity: 0.7;
+}
+@media (min-width: 766px) {
+  .NavbarContainer {
+    opacity: 1;
+  }
 }
 
 .playlistSalvate {
   overflow-y: auto;
-  max-height: 30%;
+  max-height: 50%;
 }
 
 .playlistSalvate::-webkit-scrollbar {
@@ -333,8 +339,13 @@ button:hover {
   margin-bottom: 1em;
 }
 
+
 .barraUtente {
   position: sticky;
+}
+.nBrani {
+  margin: 0 1em 0 0;
+
 }
 
 .MainContent {
@@ -410,89 +421,30 @@ button:hover {
   color: rgba(255, 255, 255, 0.61);
 }
 
-.linear {
-  line-height: 3;
-  color: rgba(255, 255, 255, 0.61);
-}
-
-.barraUtente {
-  position: fixed;
-  width: 60%;
-}
-
-.barraUtente {
-  position: fixed;
-}
-
-#backgroundImage {
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: 20%;
-  height: 100%;
+#audioPlayer {
   width: 100%;
-  filter: brightness(0.7);
-  top: 0;
-  left: 0;
+  background-color: #0e0d0d;
+  color: white;
 }
 
-#backgroundRelative {
-  position: relative;
+.staticBar {
+  width: 80%;
+  height: 2px;
+  background-color: gray;
 }
 
-#backgroundImage2 {
-  position: relative;
-  z-index: 1;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1rem;
-  color: #fff;
-}
-
-#backgroundImage2 p {
-  color: #fff;
-}
-
-#backgroundImage2 h1 {
-  font-size: 6rem;
-  color: #fff;
-}
-
-.barraUtente {
-  z-index: 2;
-  position: fixed;
-  width: 65%;
-}
-
-.MainContent {
-  overflow-x: hidden;
-  background: linear-gradient(to bottom, #333333, #0c0c0c);
-}
-
-.vedoNonVedo {
+.playerBar {
+  width: 80%;
+  height: 2px;
+  background-color: white;
   display: none;
+  transition: width 1s linear;
 }
 
-@media (max-width: 766px) {
-  .frecciaSinistra {
-    width: 60px;
-    height: 60px;
-  }
-  .frecciaDestra, .profilo, .artistaVerificato, .ascoltiMensili {
-    display: none;
-  }
-  .vedoNonVedo {
-    display: block;
-  }
-  .playFollow {
-    display: none !important;
-  }
-  .popolari {
-    order: 2;
-  }
+.playerPlay {
+  width: 2em;
 }
+
 body {
   font-family: "Circular";
 }

@@ -38,9 +38,8 @@ const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
 const favouriteContainer2 = document.getElementById("favouriteContainer2");
-
 const indexArray = [];
-console.log(indexArray);
+const audioPlayer = document.getElementById('audioPlayer')
 
 /**Funzione onload */
 window.onload = function () {
@@ -163,6 +162,12 @@ function displaySong(songs) {
   songButtonDiv.appendChild(options);
 
   songContainer.appendChild(playListSongCard);
+
+  playButton.onclick = function () {
+    audioPlayer.innerHTML = '';
+    i = -1;
+    displayAudioPlayer(song);
+  }
 }
 
 /**Funzione display playlist song */
@@ -235,6 +240,12 @@ function displayPlayListSongs(songs) {
     artistAnchor.appendChild(artistName);
 
     playListContainer.appendChild(playListSongDiv);
+
+    songName.onclick = function () {
+      audioPlayer.innerHTML = '';
+      i = -1;
+      displayAudioPlayer(song);
+    }
   });
 }
 
@@ -293,7 +304,7 @@ function displayFavouriteSongs1(songs) {
     const artistName = document.createElement("p");
     artistName.textContent = song.artist.name;
     artistAnchor.href = "./artist.html?artistId=" + song.artist.id;
-    
+
 
     const favListRow = document.createElement("div");
     favListRow.classList.add("row", "favListRow", 'd-md-none');
@@ -311,11 +322,14 @@ function displayFavouriteSongs1(songs) {
   </svg>`;
 
     const favListInfoCol = document.createElement("div");
-    favListInfoCol.classList.add("col-6", 'text-end');
+    favListInfoCol.classList.add("col-6", 'd-flex', 'justify-content-end', 'align-items-center');
+    const nBrani = document.createElement('p');
+    nBrani.textContent = randomNumber() + ' brani';
+    nBrani.classList.add('nBrani');
     const play = document.createElement("div");
-    play.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-</svg>`;
+    play.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-circle-fill me-4" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+  </svg>`;
 
     playListSongDiv.appendChild(playListSongCard);
     playListSongCard.appendChild(playListRow);
@@ -333,19 +347,119 @@ function displayFavouriteSongs1(songs) {
     favListImageCol.appendChild(like);
     favListImageCol.appendChild(options);
     favListRow.appendChild(favListInfoCol);
+    favListInfoCol.appendChild(nBrani);
     favListInfoCol.appendChild(play)
 
     favouriteContainer.appendChild(playListSongDiv);
+
+
+    songName.onclick = function () {
+      audioPlayer.innerHTML = '';
+      i = -1;
+      displayAudioPlayer(song);
+    }
+
+    play.onclick = function () {
+      audioPlayer.innerHTML = '';
+      i = -1;
+      displayAudioPlayer(song);
+    }
   });
 }
 
+/**funzione per generare un numero casuale */
+function randomNumber() {
+  const randomNumber = (Math.round(Math.random() * 25) + 5);
+  return randomNumber;
 
-var myAudio = document.getElementById("myAudio");
+}
 
-function playAudio() { 
-  myAudio.play(); 
-} 
+/**Funzione display Audioplayer */
+function displayAudioPlayer(song) {
+  clearInterval(timerInterval);
+  const playerDiv1 = document.createElement('div');
+  playerDiv1.classList.add('col-2', 'd-flex', 'bg-black')
 
-function pauseAudio() { 
-  myAudio.pause(); 
-} 
+  const playerImage = document.createElement('img');
+  playerImage.src = song.album.cover_small;
+  playerImage.alt = song.title_short;
+
+  const div1Div = document.createElement('div');
+
+  const playerSongTitle = document.createElement('h5');
+  playerSongTitle.textContent = song.album.title;
+
+  const playerArtist = document.createElement('p');
+  playerArtist.textContent = song.artist.name;
+
+  const likeDiv = document.createElement('div');
+  likeDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>`;
+  const playerDiv2 = document.createElement('div');
+  playerDiv2.classList.add('col-8');
+  const playerButtonDiv = document.createElement('div');
+  playerButtonDiv.classList.add('text-center')
+  const playerPlay = document.createElement('img');
+  playerPlay.src = "./assets/imgs/play-circle-fill.svg"
+  playerPlay.classList.add('playerPlay')
+  
+  const staticBar = document.createElement('div');
+  staticBar.classList.add('staticBar');
+  const playerBar = document.createElement('div');
+  playerBar.classList.add('playerBar');
+  playerBar.id = 'playerBar';
+
+  const audioTrack = document.createElement('audio');
+  audioTrack.src = song.preview;
+  
+
+  playerDiv1.appendChild(playerImage);
+  playerDiv1.appendChild(div1Div);
+  div1Div.appendChild(playerSongTitle);
+  div1Div.appendChild(playerArtist);
+  playerDiv1.appendChild(likeDiv);
+  playerDiv2.appendChild(playerButtonDiv);
+  playerButtonDiv.appendChild(playerPlay);
+  playerDiv2.appendChild(staticBar);
+  staticBar.appendChild(playerBar);
+  playerBar.appendChild(audioTrack);
+  audioPlayer.appendChild(playerDiv1);
+  audioPlayer.appendChild(playerDiv2);
+  timerInterval = setInterval(timer, 1000);
+
+  audioTrack.play();
+  
+  /**Funzione toggle play */
+  playerPlay.onclick = function(){
+   
+      if (audioTrack.paused) {
+        audioTrack.play()
+        timerInterval = setInterval(timer, 1000);
+      }
+      else {
+        audioTrack.pause()
+        clearInterval(timerInterval)
+      }
+ 
+  }
+}
+
+/**Funzione Timer */
+let i = -1;
+let timerInterval;
+function timer() {
+  i++;
+  const max = 30; 
+  const fraction = (i / max) * 100; 
+  playerBar.style.display = 'block';
+  playerBar.style.width = `${fraction}%`;
+
+  if (i >= max) {
+    clearInterval(timerInterval);
+  }
+}
+
+
+
+
