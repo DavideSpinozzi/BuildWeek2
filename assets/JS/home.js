@@ -33,7 +33,7 @@ const playlistNames = [
   "ma(ncanza) che cazzo ne so io (gen-feb 2021)",
 ];
 /**Costanti */
-const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=pop";
+const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=blues";
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
@@ -168,6 +168,11 @@ function displaySong(songs) {
     i = -1;
     displayAudioPlayer(song);
   }
+  songName.onclick = function () {
+    audioPlayer.innerHTML = '';
+    i = -1;
+    displayAudioPlayer(song);
+  }
 }
 
 /**Funzione display playlist song */
@@ -217,10 +222,11 @@ function displayPlayListSongs(songs) {
     const albumName = document.createElement("p");
     albumName.textContent = song.album.title;
     albumAnchor.href = "./album.html?albumId=" + song.album.id;
+    albumAnchor.classList.add('d-md-none');
 
     const songName = document.createElement("p");
     songName.textContent = song.title;
-    songName.classList.add('d-md-none');
+
 
     const artistAnchor = document.createElement("a");
     const artistName = document.createElement("p");
@@ -378,32 +384,52 @@ function randomNumber() {
 function displayAudioPlayer(song) {
   clearInterval(timerInterval);
   const playerDiv1 = document.createElement('div');
-  playerDiv1.classList.add('col-2', 'd-flex', 'bg-black')
+  playerDiv1.classList.add('col-12', 'col-md-2', 'd-flex', 'playerDiv1', 'align-items-center')
 
   const playerImage = document.createElement('img');
   playerImage.src = song.album.cover_small;
   playerImage.alt = song.title_short;
+  playerImage.classList.add('playerImage', 'me-2', 'd-none', 'd-md-block');
 
   const div1Div = document.createElement('div');
+  div1Div.classList.add('div1Div', 'me-2');
 
   const playerSongTitle = document.createElement('h5');
-  playerSongTitle.textContent = song.album.title;
+  playerSongTitle.textContent = song.title;
 
   const playerArtist = document.createElement('p');
   playerArtist.textContent = song.artist.name;
+  playerArtist.classList.add('d-none', 'd-md-block')
+
+  const div1Buttons = document.createElement('div');
+  div1Buttons.classList.add('d-flex', 'align-items-center')
 
   const likeDiv = document.createElement('div');
-  likeDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  likeDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 </svg>`;
+  likeDiv.classList.add('me-3')
+
+  const hiddenPlayerPlay = document.createElement('img');
+  hiddenPlayerPlay.src = "./assets/imgs/play-circle-fill.svg";
+  hiddenPlayerPlay.classList.add('d-md-none', 'playerPlay', 'me-3');
+
+  const hiddenPlayerClose = document.createElement('div');
+  hiddenPlayerClose.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+  class="bi bi-x-lg ms-2" viewBox="0 0 16 16">
+  <path
+    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+</svg>`;
+  hiddenPlayerClose.classList.add('d-md-none', 'me-3');
+
   const playerDiv2 = document.createElement('div');
-  playerDiv2.classList.add('col-8');
+  playerDiv2.classList.add('col-0', 'col-md-8', 'd-flex', 'flex-column', 'd-none', 'd-md-block');
   const playerButtonDiv = document.createElement('div');
-  playerButtonDiv.classList.add('text-center')
+  playerButtonDiv.classList.add('text-center', 'm-1')
   const playerPlay = document.createElement('img');
   playerPlay.src = "./assets/imgs/play-circle-fill.svg"
   playerPlay.classList.add('playerPlay')
-  
+
   const staticBar = document.createElement('div');
   staticBar.classList.add('staticBar');
   const playerBar = document.createElement('div');
@@ -412,36 +438,72 @@ function displayAudioPlayer(song) {
 
   const audioTrack = document.createElement('audio');
   audioTrack.src = song.preview;
-  
+
+  const playerDiv3 = document.createElement('div');
+  playerDiv3.classList.add('col-0', 'col-md-2', 'd-flex', 'p-3', 'align-items-center', 'justify-content-center', 'd-none', 'd-md-block');
+
+  const playerClose = document.createElement('div');
+  playerClose.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+  class="bi bi-x-lg ms-2" viewBox="0 0 16 16">
+  <path
+    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+</svg>`
+
 
   playerDiv1.appendChild(playerImage);
   playerDiv1.appendChild(div1Div);
   div1Div.appendChild(playerSongTitle);
   div1Div.appendChild(playerArtist);
-  playerDiv1.appendChild(likeDiv);
+  playerDiv1.appendChild(div1Buttons);
+  div1Buttons.appendChild(likeDiv);
+  div1Buttons.appendChild(hiddenPlayerPlay);
+  div1Buttons.appendChild(hiddenPlayerClose);
   playerDiv2.appendChild(playerButtonDiv);
   playerButtonDiv.appendChild(playerPlay);
   playerDiv2.appendChild(staticBar);
   staticBar.appendChild(playerBar);
   playerBar.appendChild(audioTrack);
+  playerDiv3.appendChild(playerClose);
   audioPlayer.appendChild(playerDiv1);
   audioPlayer.appendChild(playerDiv2);
+  audioPlayer.appendChild(playerDiv3);
   timerInterval = setInterval(timer, 1000);
 
   audioTrack.play();
-  
+
   /**Funzione toggle play */
-  playerPlay.onclick = function(){
-   
-      if (audioTrack.paused) {
-        audioTrack.play()
-        timerInterval = setInterval(timer, 1000);
-      }
-      else {
-        audioTrack.pause()
-        clearInterval(timerInterval)
-      }
- 
+  playerPlay.onclick = function () {
+
+    if (audioTrack.paused) {
+      audioTrack.play()
+      timerInterval = setInterval(timer, 1000);
+    }
+    else {
+      audioTrack.pause()
+      clearInterval(timerInterval)
+    }
+
+  }
+
+  hiddenPlayerPlay.onclick = function () {
+
+    if (audioTrack.paused) {
+      audioTrack.play()
+      timerInterval = setInterval(timer, 1000);
+    }
+    else {
+      audioTrack.pause()
+      clearInterval(timerInterval)
+    }
+
+  }
+
+  /**Funzione close playbar */
+  playerClose.onclick = function () {
+    audioPlayer.innerHTML = '';
+  }
+  hiddenPlayerClose.onclick = function () {
+    audioPlayer.innerHTML = '';
   }
 }
 
@@ -450,8 +512,8 @@ let i = -1;
 let timerInterval;
 function timer() {
   i++;
-  const max = 30; 
-  const fraction = (i / max) * 100; 
+  const max = 29;
+  const fraction = (i / max) * 100;
   playerBar.style.display = 'block';
   playerBar.style.width = `${fraction}%`;
 
