@@ -33,6 +33,12 @@
 .sidebarRx {
   height: 100vh;
 }
+
+.px-4 {
+  padding: 0.5rem !important;
+  font-size: 0.8em;
+}
+
 .sidebarRx .bg-black {
   height: 100%;
 }
@@ -65,4 +71,10 @@
   #songContainer {
     display: none !important;
   }
+}
+.barraUtente{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
 }

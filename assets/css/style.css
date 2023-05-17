@@ -105,6 +105,11 @@
   height: 100vh;
 }
 
+.px-4 {
+  padding: 0.5rem !important;
+  font-size: 0.8em;
+}
+
 .sidebarRx .bg-black {
   height: 100%;
 }
@@ -138,6 +143,13 @@
     display: none !important;
   }
 }
+.barraUtente {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+}
+
 .MainContent {
   height: 100vh;
   overflow-y: auto;
@@ -344,26 +356,37 @@ button:hover {
   background: #555;
 }
 
-.card {
+.cardinia {
   background-color: transparent;
   border: 0;
   color: white;
 }
-.card h1 {
-  margin: 0;
-  font-size: 4em;
-  white-space: nowrap;
+.cardinia .img-fluid {
+  box-shadow: 10px 10px 5px #dedede, -10px -10px 5px #dedede, 10px -10px 5px #dedede, -10px 10px 5px #dedede;
+  position: relative;
+  top: 30px;
 }
-.card .d-flex > p {
+.cardinia .album {
+  position: relative;
+  left: 50px;
+}
+.cardinia h1 {
+  margin: 0;
+  font-size: 5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.cardinia .d-flex > p {
   font-size: 0.8em;
   position: relative;
   top: 10px;
 }
-.card svg {
+.cardinia svg {
   position: relative;
   top: 7px;
 }
-.card .pincopallino {
+.cardinia .pincopallino {
   color: rgba(255, 255, 255, 0.61);
 }
 
@@ -381,6 +404,16 @@ button:hover {
 
 .greys {
   color: rgba(255, 255, 255, 0.61);
+}
+
+.linear {
+  line-height: 3;
+  color: rgba(255, 255, 255, 0.61);
+}
+
+.barraUtente {
+  position: fixed;
+  width: 60%;
 }
 
 body {

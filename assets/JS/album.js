@@ -1,5 +1,3 @@
-
-
 let admin = new URLSearchParams(window.location.search);
 
 let albumID = admin.get('albumId');
@@ -17,18 +15,31 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
   .then((data) => {
     console.log(data);
     const album = data;
+    const minutes = Math.floor(album.duration / 60);
+    const seconds = album.duration % 60;
+    const ciao = album.id;
+    console.log(ciao);
+    const forse = document.getElementById('id');
+    const vediamo = document.createElement ('a');
+    vediamo.href = "./artist.html?artistId=" + ciao;
+    console.log(vediamo);
+    forse.appendChild(vediamo);
+    // Ottenere l'elemento immagine
+
+
+    vediamo.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z"/></svg>`
     let populate = `
-    <div class="card " style="max-width: 540px;">
+    <div class="cardinia " style="max-width: 540px;">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="${album.cover_medium}" class="img-fluid" alt="album">
+    <div class="col-md-3">
+      <img id="image" src="${album.cover_medium}" class="img-fluid"  alt="album">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9 album">
       <div class="card-body mt-4">
         <p class="m-0"> Album </p>
         <h1 class="card-title">${album.title}</h1>
-        <div class="d-flex justify-content-between align-items-start">
-        <img src="${album.artist.picture}" class="img-fluid rounded-circle" width="10%" alt="album">
+        <div class="d-flex justify-content-between align-items-start" style="max-width:80%">
+        <img src="${album.artist.picture}" class=" rounded-circle" width="10%" alt="album">
         <p> ${album.artist.name} </p>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -42,7 +53,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
         </svg>
         </div>
         <p> ${album.nb_tracks} brani,</p>
-        <p class='pincopallino'> ${Math.round(album.duration / 60)}min </p>
+        <p class='pincopallino'> ${minutes}min &nbsp ${seconds}sec. </p>
         </div>
         </div>
     </div>
@@ -65,21 +76,32 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
         
           const titleSong = document.getElementById('titleSong');
           titleSong.innerHTML += `
-      <div class="d-flex">
-      <p class="greys">${i + 1}</p>
+      <div class="d-flex align-items-center">
+      <div>
+      <p class="greys me-3">${i + 1}</p>
       </div>
-      <div> ${Element.title} </div>
-      
-      
-      
-      
-      
+      <div class = " d-flex flex-column">
+      <div>
+       ${Element.title} 
+      </div>
+      <div class= 'greys'>
+       ${Element.artist.name}
+      </div>
+      </div>
       `
-
+      const duration = document.getElementById('duration');
+      duration.innerHTML += `<div class="linear ms-4">${Element.rank}</div>`
+      const time = document.getElementById('time');
+      const minutes2 = Math.floor(Element.duration / 60);
+      const seconds2 = Element.duration % 60;
+      time.innerHTML += `<div class = 'linear ms-4'>${minutes2}: ${seconds2} </div>`
         
+      
+
+
       })
     
-
+      
 
    
 

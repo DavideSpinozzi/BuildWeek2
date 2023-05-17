@@ -21,15 +21,31 @@
     background: #555;
   }
 
-.card {
+.cardinia {
   background-color: transparent;
   border: 0;
   color: white;
+  .img-fluid {
+    box-shadow:  10px  10px 5px #dedede,
+              -10px -10px 5px #dedede,
+               10px -10px 5px #dedede,
+              -10px  10px 5px #dedede;
+    position: relative;
+    top: 30px;
+  }
+  .album {
+    position: relative;
+    left: 50px;
+  }
   h1 {
     margin: 0;
-    font-size: 4em;
+    font-size: 5em;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
+
+
   .d-flex > p {
     font-size: 0.8em;
     position: relative;
@@ -58,3 +74,13 @@
 .greys {
     color: rgba(255, 255, 255, 0.61);
   }
+
+.linear {
+  line-height: 3;
+  color: rgba(255, 255, 255, 0.61);
+}
+
+.barraUtente{
+ position: fixed;
+ width: 60%;
+}
