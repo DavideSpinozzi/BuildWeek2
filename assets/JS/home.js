@@ -60,7 +60,6 @@ function displayPlayList(items) {
 const fetchAndDisplay = function () {
   fetch(url, {
     method: "GET",
-
   })
     .then((raw) => {
       return raw.json();
@@ -69,8 +68,7 @@ const fetchAndDisplay = function () {
       console.log(dati.data);
       displaySong(dati.data);
       displayPlayListSongs(dati.data);
-      displayFavouriteSongs1(dati.data)
-      displayFavouriteSongs2(dati.data);
+      displayFavouriteSongs1(dati.data);
     });
 };
 
@@ -80,38 +78,55 @@ function displaySong(songs) {
   const song = songs[randomSong];
   indexArray.push(randomSong);
 
+  const playListSongCard = document.createElement("div");
+  playListSongCard.classList.add("card", "mainSongCard", "mb-1");
+
+  const playListRow = document.createElement("div");
+  playListRow.classList.add("row");
+
+  const playListImageCol = document.createElement("div");
+  playListImageCol.classList.add("col-4", 'd-flex', 'align-items-center');
+
   const songImage = document.createElement("img");
   songImage.src = song.album.cover_medium;
   songImage.alt = song.title_short;
+  songImage.classList.add("mainSongImage", "card-image-left");
+
+  const playListInfoCol = document.createElement("div");
+  playListInfoCol.classList.add("col-8");
 
   const songInfoDiv = document.createElement("div");
+  songInfoDiv.classList.add("mainSongInfoDiv", "card-body");
 
   const albumAnchor = document.createElement("a");
   const albumName = document.createElement("p");
   albumName.textContent = song.album.title;
-  albumAnchor.href = './album.html?albumId='+ song.album.id;
+  albumAnchor.href = "./album.html?albumId=" + song.album.id;
 
   const songName = document.createElement("h1");
   songName.textContent = song.title;
+  songName.className = "homeTitle";
 
   const artistAnchor = document.createElement("a");
   const artistName = document.createElement("p");
   artistName.textContent = song.artist.name;
-  artistAnchor.href = './artist.html?artistId=' + song.artist.id;
+  artistAnchor.href = "./artist.html?artistId=" + song.artist.id;
 
   const spamSong = document.createElement("p");
   spamSong.textContent = "Ascolta il nuovo singolo di " + song.artist.name;
 
   const songButtonDiv = document.createElement("div");
-  songButtonDiv.className = "d-flex";
+  songButtonDiv.classList.add("d-flex", "align-items-center");
 
   const playButton = document.createElement("button");
   playButton.type = "button";
   playButton.textContent = "Play";
+  playButton.className = "playButton";
 
   const saveButton = document.createElement("button");
   saveButton.type = "button";
   saveButton.textContent = "Save";
+  saveButton.className = "saveButton";
 
   const options = document.createElement("div");
   options.innerHTML = `<svg
@@ -131,6 +146,11 @@ function displaySong(songs) {
         />
       </svg>`;
 
+  playListSongCard.appendChild(playListRow);
+  playListRow.appendChild(playListImageCol);
+  playListImageCol.appendChild(songImage);
+  playListRow.appendChild(playListInfoCol);
+  playListInfoCol.appendChild(songInfoDiv);
   songInfoDiv.appendChild(albumAnchor);
   albumAnchor.appendChild(albumName);
   songInfoDiv.appendChild(songName);
@@ -142,8 +162,7 @@ function displaySong(songs) {
   songButtonDiv.appendChild(saveButton);
   songButtonDiv.appendChild(options);
 
-  songContainer.appendChild(songImage);
-  songContainer.appendChild(songInfoDiv);
+  songContainer.appendChild(playListSongCard);
 }
 
 /**Funzione display playlist song */
@@ -167,30 +186,48 @@ function displayPlayListSongs(songs) {
   currentIndex.forEach((index) => {
     const song = songs[index];
     const playListSongDiv = document.createElement("div");
-    playListSongDiv.classList.add("col-6", "col-md-4", "d-flex");
+    playListSongDiv.classList.add("playListSongDiv", "col-6", "col-md-4");
+
+    const playListSongCard = document.createElement("div");
+    playListSongCard.classList.add("card", "playListCard", "mb-1");
+
+    const playListRow = document.createElement("div");
+    playListRow.classList.add("row", "playListRow");
+
+    const playListImageCol = document.createElement("div");
+    playListImageCol.classList.add("col-5");
+
     const songImage = document.createElement("img");
-    songImage.src = song.album.cover_small;
+    songImage.src = song.album.cover;
     songImage.alt = song.title_short;
-    songImage.classList.add("playListSongImage");
+    songImage.classList.add("playListSongImage", "card-image-left");
+
+    const playListInfoCol = document.createElement("div");
+    playListInfoCol.classList.add("col-7");
 
     const songInfoDiv = document.createElement("div");
+    songInfoDiv.classList.add("songInfoDiv", "card-body");
 
     const albumAnchor = document.createElement("a");
     const albumName = document.createElement("p");
     albumName.textContent = song.album.title;
-    albumAnchor.href = './album.html?albumId='+ song.album.id;
-
+    albumAnchor.href = "./album.html?albumId=" + song.album.id;
 
     const songName = document.createElement("p");
     songName.textContent = song.title;
+    songName.classList.add('d-md-none');
 
     const artistAnchor = document.createElement("a");
     const artistName = document.createElement("p");
     artistName.textContent = song.artist.name;
-    artistAnchor.href = './artist.html?artistId=' + song.artist.id;
+    artistAnchor.href = "./artist.html?artistId=" + song.artist.id;
 
-    playListSongDiv.appendChild(songImage);
-    playListSongDiv.appendChild(songInfoDiv);
+    playListSongDiv.appendChild(playListSongCard);
+    playListSongCard.appendChild(playListRow);
+    playListRow.appendChild(playListImageCol);
+    playListImageCol.appendChild(songImage);
+    playListRow.appendChild(playListInfoCol);
+    playListInfoCol.appendChild(songInfoDiv);
     songInfoDiv.appendChild(albumAnchor);
     albumAnchor.appendChild(albumName);
     songInfoDiv.appendChild(songName);
@@ -203,104 +240,112 @@ function displayPlayListSongs(songs) {
 
 /**Funzione display favourite songs */
 function displayFavouriteSongs1(songs) {
-    const currentIndex = [];
-    while (currentIndex.length < 5) {
-      const randomIndex = Math.floor(Math.random() * songs.length);
-      let isIndexUnique = true;
-      for (let i = 0; i < indexArray.length; i++) {
-        if (indexArray[i] === randomIndex) {
-          isIndexUnique = false;
-          break;
-        }
-      }
-      if (isIndexUnique) {
-        indexArray.push(randomIndex);
-        currentIndex.push(randomIndex);
+  const currentIndex = [];
+  while (currentIndex.length < 12) {
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    let isIndexUnique = true;
+    for (let i = 0; i < indexArray.length; i++) {
+      if (indexArray[i] === randomIndex) {
+        isIndexUnique = false;
+        break;
       }
     }
-    currentIndex.forEach((index) => {
-      const song = songs[index];
-      const playListSongDiv = document.createElement("div");
-      playListSongDiv.classList.add("col-12", "col-md", "d-flex", 'd-md-block');
-      const songImage = document.createElement("img");
-      songImage.src = song.album.cover_medium;
-      songImage.alt = song.title_short;
-      songImage.classList.add("favouriteSongImage");
-  
-      const songInfoDiv = document.createElement("div");
-  
-      const albumAnchor = document.createElement("a");
-      const albumName = document.createElement("p");
-      albumName.textContent = song.album.title;
-      albumAnchor.href = './album.html?albumId='+ song.album.id;
-  
-      const songName = document.createElement("p");
-      songName.textContent = song.title;
-  
-      const artistAnchor = document.createElement("a");
-      const artistName = document.createElement("p");
-      artistName.textContent = song.artist.name;
-      artistAnchor.href = './artist.html?artistId=' + song.artist.id;
-  
-      playListSongDiv.appendChild(songImage);
-      playListSongDiv.appendChild(songInfoDiv);
-      songInfoDiv.appendChild(albumAnchor);
-      albumAnchor.appendChild(albumName);
-      songInfoDiv.appendChild(songName);
-      songInfoDiv.appendChild(artistAnchor);
-      artistAnchor.appendChild(artistName);
-  
-      favouriteContainer.appendChild(playListSongDiv);
-    });
-  }
-  function displayFavouriteSongs2(songs) {
-    const currentIndex = [];
-    while (currentIndex.length < 5) {
-      const randomIndex = Math.floor(Math.random() * songs.length);
-      let isIndexUnique = true;
-      for (let i = 0; i < indexArray.length; i++) {
-        if (indexArray[i] === randomIndex) {
-          isIndexUnique = false;
-          break;
-        }
-      }
-      if (isIndexUnique) {
-        indexArray.push(randomIndex);
-        currentIndex.push(randomIndex);
-      }
+    if (isIndexUnique) {
+      indexArray.push(randomIndex);
+      currentIndex.push(randomIndex);
     }
-    currentIndex.forEach((index) => {
-      const song = songs[index];
-      const playListSongDiv = document.createElement("div");
-      playListSongDiv.classList.add("col-12", "col-md", "d-flex", 'd-md-block');
-      const songImage = document.createElement("img");
-      songImage.src = song.album.cover_medium;
-      songImage.alt = song.title_short;
-      songImage.classList.add("favouriteSongImage");
-  
-      const songInfoDiv = document.createElement("div");
-  
-      const albumAnchor = document.createElement("a");
-      const albumName = document.createElement("p");
-      albumName.textContent = song.album.title;
-      albumAnchor.href = './album.html?albumId='+ song.album.id;
-  
-      const songName = document.createElement("p");
-      songName.textContent = song.title;
-  
-      const artistAnchor = document.createElement("a");
-      const artistName = document.createElement("p");
-      artistName.textContent = song.artist.name;
-      artistAnchor.href = './artist.html?artistId=' + song.artist.id;
-  
-      playListSongDiv.appendChild(songImage);
-      playListSongDiv.appendChild(songInfoDiv);
-      songInfoDiv.appendChild(albumAnchor);
-      albumAnchor.appendChild(albumName);
-      songInfoDiv.appendChild(songName);
-      songInfoDiv.appendChild(artistAnchor);
-      artistAnchor.appendChild(artistName);
-  
-      favouriteContainer2.appendChild(playListSongDiv);
-    });
   }
+  currentIndex.forEach((index) => {
+    const song = songs[index];
+    const playListSongDiv = document.createElement("div");
+    playListSongDiv.classList.add("playListSongDiv", "col-12", "col-md-3", 'mb-2');
+
+    const playListSongCard = document.createElement("div");
+    playListSongCard.classList.add("card", "favListCard", "mb-1");
+
+    const playListRow = document.createElement("div");
+    playListRow.classList.add("row", "playListRow");
+
+    const playListImageCol = document.createElement("div");
+    playListImageCol.classList.add("col-6", 'col-md-12');
+
+    const songImage = document.createElement("img");
+    songImage.src = song.album.cover_medium;
+    songImage.alt = song.title_short;
+    songImage.classList.add("favListSongImage", "card-image-left");
+
+    const playListInfoCol = document.createElement("div");
+    playListInfoCol.classList.add("col-6", 'col-md-12');
+
+    const songInfoDiv = document.createElement("div");
+    songInfoDiv.classList.add("favSongInfoDiv", "card-body");
+
+    const albumAnchor = document.createElement("a");
+    const albumName = document.createElement("p");
+    albumName.textContent = song.album.title;
+    albumAnchor.href = "./album.html?albumId=" + song.album.id;
+
+    const songName = document.createElement("p");
+    songName.textContent = song.title;
+    songName.classList.add('favSongName', 'd-md-none');
+
+    const artistAnchor = document.createElement("a");
+    const artistName = document.createElement("p");
+    artistName.textContent = song.artist.name;
+    artistAnchor.href = "./artist.html?artistId=" + song.artist.id;
+    
+
+    const favListRow = document.createElement("div");
+    favListRow.classList.add("row", "favListRow", 'd-md-none');
+
+    const favListImageCol = document.createElement("div");
+    favListImageCol.classList.add("col-6", 'd-flex',);
+
+    const like = document.createElement("div");
+    like.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>`;
+    const options = document.createElement("div");
+    options.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+  </svg>`;
+
+    const favListInfoCol = document.createElement("div");
+    favListInfoCol.classList.add("col-6", 'text-end');
+    const play = document.createElement("div");
+    play.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>`;
+
+    playListSongDiv.appendChild(playListSongCard);
+    playListSongCard.appendChild(playListRow);
+    playListRow.appendChild(playListImageCol);
+    playListImageCol.appendChild(songImage);
+    playListRow.appendChild(playListInfoCol);
+    playListInfoCol.appendChild(songInfoDiv);
+    songInfoDiv.appendChild(albumAnchor);
+    albumAnchor.appendChild(albumName);
+    songInfoDiv.appendChild(songName);
+    songInfoDiv.appendChild(artistAnchor);
+    artistAnchor.appendChild(artistName);
+    playListSongCard.appendChild(favListRow);
+    favListRow.appendChild(favListImageCol);
+    favListImageCol.appendChild(like);
+    favListImageCol.appendChild(options);
+    favListRow.appendChild(favListInfoCol);
+    favListInfoCol.appendChild(play)
+
+    favouriteContainer.appendChild(playListSongDiv);
+  });
+}
+
+
+var myAudio = document.getElementById("myAudio");
+
+function playAudio() { 
+  myAudio.play(); 
+} 
+
+function pauseAudio() { 
+  myAudio.pause(); 
+} 

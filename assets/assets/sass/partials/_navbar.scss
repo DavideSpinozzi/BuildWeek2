@@ -1,72 +1,68 @@
-.MainContent{
-    height: 100vh;
-    overflow-y: auto;
-  }
-  .NavbarContainer{
-    max-height: 100vh;
-  }
-    .playlistSalvate{
-      overflow-y: auto ;
-      max-height: 50%;
-    }
-    .playlistSalvate::-webkit-scrollbar {
-      width: 10px;
-    }
-    
-    .playlistSalvate::-webkit-scrollbar-track {
-      background: #f1f1f1; 
-    }
-    
-    .playlistSalvate::-webkit-scrollbar-thumb {
-      background: #888; 
-    }
-    
-    .playlistSalvate::-webkit-scrollbar-thumb:hover {
-      background: #555; 
-    }
-    .playlistSalvate p{
-      white-space: nowrap;
-        overflow: hidden; 
-        text-overflow: ellipsis;
-        color: white;
-      
-    }
-    .sidebarRxIcons{
-      color: #585858;
-    }
-   .sidebarRx{
-    height: 100vh;
-   }
-    .sidebarRx .bg-black{
-      height: 100%;
-    }
-    @media (max-width: 766px){
-  
-    #Navbar{
-      width: 100%;
+.NavbarContainer {
+  max-height: 100vh;
+  z-index: 1;
+}
+.playlistSalvate {
+  overflow-y: auto;
+  max-height: 50%;
+}
+.playlistSalvate::-webkit-scrollbar {
+  width: 10px;
+}
+
+.playlistSalvate::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.playlistSalvate::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.playlistSalvate::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.playlistSalvate p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+.sidebarRxIcons {
+  color: #585858;
+}
+.sidebarRx {
+  height: 100vh;
+}
+.sidebarRx .bg-black {
+  height: 100%;
+}
+@media (max-width: 766px) {
+  #Navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+
+    div {
+      width: 33.3%;
       display: flex;
-      justify-content: center;
-      justify-content: space-evenly;
-      
-      div{
-          width: 33.3%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 0 !important;
-          #NavBar, div, svg{
-              margin: 0 !important;
-  
-          }
+      flex-direction: column;
+      align-items: center;
+      margin: 0 !important;
+      #NavBar,
+      div,
+      svg {
+        margin: 0 !important;
       }
     }
-    .NavbarContainer{
-      padding: 0rem !important;
-      width: 100% !important;
-      position: fixed;
-      bottom: 0;
-    }
-    #songContainer{
-      display: none !important;
-    }
   }
+  .NavbarContainer {
+    padding: 0rem !important;
+    width: 100% !important;
+    position: fixed;
+    bottom: 0;
+  }
+  #songContainer {
+    display: none !important;
+  }
+}
