@@ -2,7 +2,6 @@ const artist = new URLSearchParams(window.location.search);
 const artistId = artist.get("artistId");
 const mainContent = document.querySelector(".MainContent");
 const aggiungiTracks = document.getElementById("aggiungiTracks");
-const tracks= []
 var apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=50`;
 
 //const tracks= []
