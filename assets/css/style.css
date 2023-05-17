@@ -71,7 +71,7 @@
 
 .playlistSalvate {
   overflow-y: auto;
-  max-height: 50%;
+  max-height: 30%;
 }
 
 .playlistSalvate::-webkit-scrollbar {
@@ -135,9 +135,6 @@
     bottom: 0;
   }
   #songContainer {
-    display: none !important;
-  }
-  .barraUtente {
     display: none !important;
   }
 }
