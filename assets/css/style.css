@@ -180,8 +180,13 @@
 }
 
 .playListSongImage {
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 3px 0 0 3px;
+}
+@media (min-width: 766px) {
+  .playListSongImage {
+    max-width: 100%;
+  }
 }
 
 .mainSongImage {

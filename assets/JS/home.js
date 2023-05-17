@@ -392,7 +392,7 @@ function displayAudioPlayer(song) {
   playerImage.classList.add('playerImage', 'me-2', 'd-none', 'd-md-block');
 
   const div1Div = document.createElement('div');
-  div1Div.classList.add('div1Div', 'me-2');
+  div1Div.classList.add('div1Div', 'me-4', 'me-md-2');
 
   const playerSongTitle = document.createElement('h5');
   playerSongTitle.textContent = song.title;
@@ -408,7 +408,7 @@ function displayAudioPlayer(song) {
   likeDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 </svg>`;
-  likeDiv.classList.add('me-3')
+  likeDiv.classList.add('me-4')
 
   const hiddenPlayerPlay = document.createElement('img');
   hiddenPlayerPlay.src = "./assets/imgs/play-circle-fill.svg";
