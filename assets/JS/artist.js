@@ -1,21 +1,24 @@
-const artist= new URLSearchParams(window.location.search);
-const artistId= artist.get('artistId');
-const mainContent= document.querySelector('.MainContent');
-const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=50`;
-const tracks=[]
+const artist = new URLSearchParams(window.location.search);
+const artistId = artist.get("artistId");
+const mainContent = document.querySelector(".MainContent");
+const aggiungiTracks = document.getElementById("aggiungiTracks");
+const tracks= []
+var apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=50`;
 
+//const tracks= []
 
-window.onload=()=>{
-    fetch (`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`)
-.then((res) => {
-if(res.ok) {
-    return res.json();
-}else{
-    throw new Error ('errore');
-}})
-.then((data)=>{
-    console.log(data);
-    const contenuti= `
+window.onload = () => {
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error("errore");
+      }
+    })
+    .then((data) => {
+      console.log(data);
+      const contenuti = `
     <div>
     <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill mb-1" viewBox="0 0 16 16">
     <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
@@ -51,31 +54,66 @@ if(res.ok) {
         <div class='col-4'>
         <h3>Brani che ti piacciono</h3>
         <div class='row'>
-        <div class='col-2'><img src='${data.picture}' width='70' height='70' class='rounded-circle'></div><div class='col-10 d-flex flex-column justify-content-center'><p class='mb-1'>Hai messo Mi piace a 11 brani</p><p class='m-0 text-secondary'>Di ${data.name}</p></div></div>
+        <div class='col-2'><img src='${
+          data.picture
+        }' width='70' height='70' class='rounded-circle'></div><div class='col-10 d-flex flex-column justify-content-center'><p class='mb-1'>Hai messo Mi piace a 11 brani</p><p class='m-0 text-secondary'>Di ${
+        data.name
+      }</p></div></div>
         </div>
-        </div>`
-  mainContent.innerHTML += contenuti
-})
-.catch((err) => {
-    console.log(err);
-})
-////////////////////////////////////////////////  
+        </div>`;
+      mainContent.innerHTML += contenuti;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-async function fetchTracks(url){
-   
-    while(url){
-        const response =await fetch(url);
-        const data = await response.json();
-        const tracksFetchate = data.data;
-        tracks.push(tracksFetchate);
-        url= data.next
-        console.log(url)
-        console.log(tracks)
-    }
+
+};
+
+    aggiungiTracks.addEventListener('click', function(event) {
+      event.preventDefault();
     
-}
-fetchTracks(apiUrl)
-.then(()=>{console.log(tracks)})
+      fetchTracks(apiUrl)
 
-.catch((error)=>{console.log(error)})
+    });
+  ////////////////////////////////////////////////
+
+  //async function fetchTracks(url){
+
+  // while(url){
+  //   const response =await fetch(url);
+  //  const data = await response.json();
+  //  const tracksFetchate = data.data;
+  //  tracks.push(tracksFetchate)
+  //  url= data.next
+  //  console.log(url)
+  // console.log(tracksFetchate)
+  // if(!data.next){
+  //  break
+  //  }
+  // }
+
+//fetchTracks(apiUrl)
+//
+///.catch((error)=>{console.log(error)})
+
+//}
+async function fetchTracks(url) {
+  
+  fetch(url)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error("errore");
+      }
+    })
+    .then((data) => {
+      console.log(data);
+      url = data.next;
+      console.log(url);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
