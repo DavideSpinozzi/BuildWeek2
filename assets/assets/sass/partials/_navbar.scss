@@ -66,3 +66,9 @@
     display: none !important;
   }
 }
+.barraUtente{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+}
