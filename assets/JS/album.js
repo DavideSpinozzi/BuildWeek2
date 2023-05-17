@@ -52,25 +52,23 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
     let albumContainer = document.getElementById('albumContainer');
     albumContainer.innerHTML += populate;
 
-    let songs = [];
-    songs.push(album.tracks.data)
+    let songs = album.tracks.data;
     console.log(songs);
 
-    const firstSongTitle = songs[0][0].title;
+    const firstSongTitle = songs[0].title;
     console.log(firstSongTitle);
 
 
-    songs.forEach(Element => {
-      Element.forEach(song => {
+    songs.forEach((Element,i) => {
         
         
         
           const titleSong = document.getElementById('titleSong');
           titleSong.innerHTML += `
       <div class="d-flex">
-      <p class="greys">${i}</p>
+      <p class="greys">${i + 1}</p>
       </div>
-      <div> ${song.title} </div>
+      <div> ${Element.title} </div>
       
       
       
@@ -80,7 +78,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
 
         
       })
-    })
+    
 
 
    
