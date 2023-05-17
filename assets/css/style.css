@@ -154,6 +154,45 @@
   width: 100%;
 }
 
+.card {
+  background-color: transparent;
+  border: 0;
+  color: white;
+}
+.card h1 {
+  margin: 0;
+  font-size: 4em;
+  white-space: nowrap;
+}
+.card .d-flex > p {
+  font-size: 0.8em;
+  position: relative;
+  top: 10px;
+}
+.card svg {
+  position: relative;
+  top: 7px;
+}
+.card .pincopallino {
+  color: rgba(255, 255, 255, 0.61);
+}
+
+.ms-1 {
+  padding: 1rem;
+  border-radius: 100px;
+  background-color: green;
+}
+
+.grey {
+  color: rgba(255, 255, 255, 0.61);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.61);
+  font-size: 0.8em;
+}
+
+.greys {
+  color: rgba(255, 255, 255, 0.61);
+}
+
 body {
   font-family: "Circular";
 }/*# sourceMappingURL=style.css.map */
