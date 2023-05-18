@@ -150,6 +150,8 @@
     width: 100% !important;
     position: fixed;
     bottom: 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
   }
   .NavbarContainer div {
@@ -401,10 +403,6 @@ button:hover {
   fill: #1ed760;
 }
 
-.frecciaSinistraHome {
-  display: none;
-}
-
 .cardinia {
   background-color: transparent;
   border: 0;
@@ -633,7 +631,8 @@ button:hover {
     width: 60px;
     height: 60px;
   }
-  .frecciaDestra, .profilo, .artistaVerificato, .ascoltiMensili {
+  .frecciaSinistraHome .frecciaDestra,
+  .profilo, .artistaVerificato, .ascoltiMensili {
     display: none;
   }
   .vedoNonVedo {

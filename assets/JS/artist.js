@@ -80,7 +80,7 @@ window.onload = () => {
   <div class='vedoNonVedo text-secondary p-3'>${data.nb_fan} ascoltatori mensili</div>
   <div class='vedoNonVedo'>
   <div class='d-flex justify-content-between align-items-center p-3 pb-0'><div class='d-flex align-items-center'><p class='m-0 px-3 py-1 border rounded-1 me-4 follow' onclick="toggleFollow()">FOLLOW</p>
-  <div class="dropdown"><svg xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+  <div class="dropdown pb-3"><svg xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
 </svg><ul class="dropdown-menu">
 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -103,7 +103,7 @@ window.onload = () => {
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
 </svg>
 <p class='m-0 px-3 py-1 border rounded-1 me-4 follow' onclick="toggleFollow()">FOLLOW</p>
-<div class="dropdown">
+<div class="dropdown pb-3">
           <svg href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg"
             width="30" height="30" fill="currentColor" class="bi bi-three-dots text-white" viewBox="0 0 16 16">
             <path
