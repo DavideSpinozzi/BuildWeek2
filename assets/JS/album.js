@@ -17,7 +17,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
     const album = data;
     const minutes = Math.floor(album.duration / 60);
     const seconds = album.duration % 60;
-    const ciao = album.id;
+    const ciao = album.artist.id;
     console.log(ciao);
     const forse = document.getElementById('id');
     const vediamo = document.createElement ('a');
@@ -32,10 +32,10 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
     <div class="cardinia " style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-3">
-      <img id="image" src="${album.cover_medium}" class="img-fluid"  alt="album">
+      <img id="image" src="${album.cover_medium}" class="img-fluid text-sm-center mb-4 "  alt="album">
     </div>
     <div class="col-md-9 album">
-      <div class="card-body mt-4">
+      <div class="card-body pincopallo mt-4">
         <p class="m-0"> Album </p>
         <h1 class="card-title">${album.title}</h1>
         <div class="d-flex justify-content-between align-items-start" style="max-width:80%">
@@ -97,6 +97,9 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
       time.innerHTML += `<div class = 'linear ms-4'>${minutes2}: ${seconds2} </div>`
         
       
+   
+
+
 
 
       })

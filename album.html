@@ -125,11 +125,11 @@
             </div>
             <div>
                 <div id="albumContainer" class="container mb-5 pt-5"></div>
-                <div class="d-flex align-items-end container mb-5">
-                    <span class="material-symbols-outlined ms-1">
-                        play_arrow
-                    </span>
-                    <span class="material-symbols-outlined ms-2 p-3">
+                <div class="d-flex align-items-end container justify-content-between" style="width: 50%;">
+                    <svg   xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-play-circle-fill  text-success" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                      </svg>
+                    <span class="material-symbols-outlined  p-3">
                         favorite
                     </span>
                     <span class="material-symbols-outlined  p-3">
@@ -151,13 +151,13 @@
                 </div>
                 <div class="container">
                     <div class="row grey mb-3">
-                        <div class="col-12 col-md-6 ">
+                        <div class="col-12 col-md-6 d-none d-lg-block">
                             <p># &nbsp &nbsp TITOLO</p>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-4 d-none d-lg-block">
                             <p>RIPRODUZIONI</p>
                         </div>
-                        <div class="col-12 col-md-2">
+                        <div class="col-12 col-md-2 d-none d-lg-block">
                             <span class="material-symbols-outlined ms-4">
                                 schedule
                             </span>
@@ -168,10 +168,10 @@
 
                             <div id="titleSong"></div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-4 d-none d-lg-block">
                             <div id="duration"></div>
                         </div>
-                        <div class="col-12 col-md-2">
+                        <div class="col-12 col-md-2 d-none d-lg-block">
                             <div id="time"></div>
                         </div>
                     </div>
@@ -260,7 +260,6 @@
         </div>
 
         <script src="assets/JS/album.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
