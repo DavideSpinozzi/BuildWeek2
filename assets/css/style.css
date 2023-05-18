@@ -67,12 +67,18 @@
 .NavbarContainer {
   max-height: 100vh;
   z-index: 1;
-  opacity: 0.7;
 }
-@media (min-width: 766px) {
-  .NavbarContainer {
-    opacity: 1;
-  }
+
+.NavbarContainer svg:hover {
+  color: white !important;
+}
+
+.NavbarContainer div:hover {
+  color: white !important;
+}
+
+.NavbarContainer p:hover {
+  color: white !important;
 }
 
 .playlistSalvate {
@@ -100,7 +106,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: white;
+  color: gray;
 }
 
 .sidebarRxIcons {
@@ -144,6 +150,12 @@
     width: 100% !important;
     position: fixed;
     bottom: 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
+  }
+  .NavbarContainer div {
+    opacity: 1 !important;
   }
   #songContainer {
     display: none !important;
@@ -156,6 +168,16 @@
   top: 0;
 }
 
+@media (max-width: 1060px) {
+  .playlistSalvate {
+    max-height: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .playlistSalvate {
+    max-height: 30%;
+  }
+}
 .MainContent {
   height: 100vh;
   overflow-y: auto;
@@ -341,6 +363,7 @@ button:hover {
 
 .barraUtente {
   position: sticky;
+  top: 0;
 }
 
 .nBrani {

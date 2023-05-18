@@ -460,6 +460,11 @@ function timer() {
   }
 }
 
-
+function goHome(){
+  window.location ='home.html'
+}
+function goBack(){
+  window.history.back();
+}
 
 
