@@ -168,14 +168,39 @@
   top: 0;
 }
 
-@media (max-width: 1060px) {
+@media (max-height: 1060px) {
+  .playlistSalvate {
+    max-height: 50%;
+  }
+}
+@media (max-height: 950px) {
+  .playlistSalvate {
+    max-height: 45%;
+  }
+}
+@media (max-height: 850px) {
   .playlistSalvate {
     max-height: 40%;
   }
 }
-@media (max-width: 950px) {
+@media (max-height: 750px) {
   .playlistSalvate {
-    max-height: 30%;
+    max-height: 32%;
+  }
+}
+@media (max-height: 650px) {
+  .playlistSalvate {
+    max-height: 23%;
+  }
+}
+@media (max-height: 550px) {
+  .playlistSalvate {
+    max-height: 18%;
+  }
+}
+@media (max-height: 450px) {
+  .playlistSalvate {
+    max-height: 10%;
   }
 }
 .MainContent {
@@ -378,6 +403,10 @@ button:hover {
   fill: #1ed760;
 }
 
+.frecciaSinistraHome {
+  display: none;
+}
+
 .cardinia {
   background-color: transparent;
   border: 0;
@@ -484,7 +513,45 @@ button:hover {
   display: none;
 }
 
+#MainContentArtist {
+  background: linear-gradient(to bottom, #333333, #0c0c0c);
+}
+
+.TrackHover:hover {
+  background-color: #4d4d4d;
+}
+.TrackHover:hover .indiceTracks {
+  display: none !important;
+}
+.TrackHover:hover .playHoverTrack {
+  display: flex !important;
+}
+.TrackHover:hover .cuoreHover {
+  display: inline !important;
+}
+
+.cuoreRelative {
+  position: relative;
+}
+
+.cuoreAbsolute {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.follow:hover {
+  background-color: #4b4b4b;
+}
+
+.playButtonHover:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 766px) {
+  .cuoreAbsolute {
+    right: 40px;
+  }
   .frecciaSinistra {
     width: 60px;
     height: 60px;
@@ -500,6 +567,16 @@ button:hover {
   }
   .popolari {
     order: 2;
+  }
+}
+@media (min-width: 2000px) {
+  .cuoreAbsolute {
+    right: 20px;
+  }
+}
+@media (max-width: 630px) {
+  .cuoreAbsolute {
+    right: 20px;
   }
 }
 #audioPlayer {
@@ -571,6 +648,7 @@ button:hover {
 
 body, html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {

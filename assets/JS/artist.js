@@ -1,7 +1,9 @@
 const artist = new URLSearchParams(window.location.search);
 const artistId = artist.get("artistId");
 const mainContent = document.querySelector(".MainContent");
-const trackDiv = document.getElementById('tracksX5')
+const trackDiv = document.getElementById('tracksX5');
+let globalData;
+let bo
 
 const playlistNames = [
   "Be The Young Seasons 1-5",
@@ -77,7 +79,7 @@ window.onload = () => {
   <!---->
   <div class='vedoNonVedo text-secondary p-3'>${data.nb_fan} ascoltatori mensili</div>
   <div class='vedoNonVedo'>
-  <div class='d-flex justify-content-between align-items-center p-3 pb-0'><div class='d-flex align-items-center'><p class='m-0 px-3 py-1 border rounded-1 me-4'>FOLLOW</p>
+  <div class='d-flex justify-content-between align-items-center p-3 pb-0'><div class='d-flex align-items-center'><p class='m-0 px-3 py-1 border rounded-1 me-4 follow' onclick="toggleFollow()">FOLLOW</p>
   <div class="dropdown"><svg xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
 </svg><ul class="dropdown-menu">
@@ -86,21 +88,21 @@ window.onload = () => {
 <li><a class="dropdown-item" href="#">Something else here</a></li>
 </ul>
 </div></div>
-<div>
+<div class='d-flex justify-content-center align-items-center me-2'>
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-shuffle me-3" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
   <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill me-4 text-success" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
-</svg>
+<div class='d-flex justify-content-center align-items-center p-2 rounded-circle bg-success playButtonHover'><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+</svg></div>
 </div>
 </div>
   </div>
-  <div class='playFollow d-flex align-items-center p-5 pb-0'><svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-play-circle-fill me-4 text-success" viewBox="0 0 16 16">
+  <div class='playFollow d-flex align-items-center p-5 pb-0'><svg xmlns="http://www.w3.org/2000/svg" onclick='ArtistPLayer(${bo})'width="70" height="70" fill="currentColor" class="bi bi-play-circle-fill me-4 text-success playButtonHover" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
 </svg>
-<p class='m-0 px-3 py-1 border rounded-1 me-4'>FOLLOW</p>
+<p class='m-0 px-3 py-1 border rounded-1 me-4 follow' onclick="toggleFollow()">FOLLOW</p>
 <div class="dropdown">
           <svg href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg"
             width="30" height="30" fill="currentColor" class="bi bi-three-dots text-white" viewBox="0 0 16 16">
@@ -119,14 +121,16 @@ window.onload = () => {
         <div class='popolari col-12 col-md-8'>
         <h3 class= 'mb-4'>Popolari</h3>
         <div id='tracksX5'></div>
-        <p class='text-secondary'>VISUALIZZA ALTRO</p>
+        <p class='text-light'>VISUALIZZA ALTRO</p>
         </div>
         <div class='col-12 col-md-4 pb-3'>
         <h3 class= 'mb-4' >Brani che ti piacciono</h3>
         <div class='row'>
-        <div class='col-3 p-0 d-flex justify-content-center'><img src='${
+        <div class='col-3 p-0 d-flex justify-content-center cuoreRelative'><img src='${
           data.picture
-        }' width='70' height='70' class='rounded-circle'></div><div class='col-9 d-flex flex-column justify-content-center p-0'><p class='mb-1'>Hai messo Mi piace a 11 brani</p><p class='m-0 text-secondary'>Di ${
+        }' width='70' height='70' class='rounded-circle'><div class='cuoreAbsolute rounded-circle bg-success border'><svg xmlns="http://www.w3.org/2000/svg" width="25" height="10" fill="currentColor" class="bi bi-heart-fill text-white" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+      </svg></div></div><div class='col-9 d-flex flex-column justify-content-center p-0'><p class='mb-1'>Hai messo Mi piace a 11 brani</p><p class='m-0 text-secondary'>Di ${
         data.name
       }</p></div></div>
         </div>
@@ -146,16 +150,38 @@ window.onload = () => {
     }
   })
   .then((data) => {
-    console.log(data.data);
-    for(i=0; i<data.data.length; i++){
-      const p= `<div class='row'><p class='col-9 col-md-7'>${i+1} <img src='${data.data[i].album.cover}' class='mx-2' width='40' heigth='40'> ${data.data[i].title}</p><p class=' col-2 col-md-3 d-flex justify-content-center align-items-center'>${data.data[i].rank}</p><p class='col-2 d-none d-md-flex justify-content-center align-items-center'>${convertiDurata(data.data[i].duration)}</p><div class="dropdown col-1 vedoNonVedo mt-1"><svg xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-    </svg><ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-    </div></div>`
+    globalData= data
+    console.log(globalData.data);
+    for(let i=0; i<data.data.length; i++){
+      bo= data.data[0];
+      const p = `
+    <div class='row d-flex TrackHover pt-3'>
+      <p class='col-1 d-flex justify-content-center align-items-center text-secondary indiceTracks' onclick="ArtistPLayer(globalData.data[${i}])">${i+1}</p>
+      <p class='col-1 d-none justify-content-center align-items-center text-secondary playHoverTrack' onclick="ArtistPLayer(globalData.data[${i}])"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+      <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+    </svg></p>
+      <p class='col-1 d-flex justify-content-center align-items-center' onclick="ArtistPLayer(globalData.data[${i}])"><img src='${data.data[i].album.cover}' width='40' height='40'></p>
+      <div class='col-8 d-md-flex justify-content-between align-items-center' onclick="ArtistPLayer(globalData.data[${i}])">
+        <p class='m-0 mb-md-3'>${data.data[i].title}</p>
+        <p class='text-secondary'>${data.data[i].rank}</p>
+      </div>
+      <p class='col-2 d-none d-md-flex justify-content-center align-items-center text-secondary'>${convertiDurata(data.data[i].duration)} <span class='cuoreHover ms-2 text-white d-none'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg></span></p>
+      <div class="dropdown col-2 vedoNonVedo mt-1"><span class='cuoreHover me-2 text-white d-none'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg></span>
+        <svg xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical text-secondary" viewBox="0 0 16 16">
+          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+  `;
       trackDiv.innerHTML+= p
     }
     })
@@ -177,3 +203,165 @@ window.onload = () => {
 
 
 };
+/**Funzione display Audioplayer */
+function displayAudioPlayer(data) {
+  clearInterval(timerInterval);
+  const playerDiv1 = document.createElement('div');
+  playerDiv1.classList.add('col-12', 'col-md-2', 'd-flex', 'playerDiv1', 'align-items-center')
+
+  const playerImage = document.createElement('img');
+  playerImage.src = data.album.cover;
+  playerImage.alt = data.title;
+  playerImage.classList.add('playerImage', 'me-2', 'd-none', 'd-md-block');
+
+  const div1Div = document.createElement('div');
+  div1Div.classList.add('div1Div', 'me-4', 'me-md-2');
+
+  const playerSongTitle = document.createElement('h5');
+  playerSongTitle.textContent = data.title;
+
+  const playerArtist = document.createElement('p');
+  playerArtist.textContent = data.artist.name;
+  playerArtist.classList.add('d-none', 'd-md-block')
+
+  const div1Buttons = document.createElement('div');
+  div1Buttons.classList.add('d-flex', 'align-items-center')
+
+  const likeDiv = document.createElement('div');
+  likeDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>`;
+  likeDiv.classList.add('me-4')
+
+  const hiddenPlayerPlay = document.createElement('img');
+  hiddenPlayerPlay.src = "./assets/imgs/play-circle-fill.svg";
+  hiddenPlayerPlay.classList.add('d-md-none', 'playerPlay', 'me-3');
+
+  const hiddenPlayerClose = document.createElement('div');
+  hiddenPlayerClose.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+  class="bi bi-x-lg ms-2" viewBox="0 0 16 16">
+  <path
+    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+</svg>`;
+  hiddenPlayerClose.classList.add('d-md-none', 'me-3');
+
+  const playerDiv2 = document.createElement('div');
+  playerDiv2.classList.add('col-0', 'col-md-8', 'd-flex', 'flex-column', 'd-none', 'd-md-block');
+  const playerButtonDiv = document.createElement('div');
+  playerButtonDiv.classList.add('text-center', 'm-1')
+  const playerPlay = document.createElement('img');
+  playerPlay.src = "./assets/imgs/play-circle-fill.svg"
+  playerPlay.classList.add('playerPlay')
+
+  const staticBar = document.createElement('div');
+  staticBar.classList.add('staticBar');
+  const playerBar = document.createElement('div');
+  playerBar.classList.add('playerBar');
+  playerBar.id = 'playerBar';
+
+  const audioTrack = document.createElement('audio');
+  audioTrack.src = data.preview;
+
+  const playerDiv3 = document.createElement('div');
+  playerDiv3.classList.add('col-0', 'col-md-2', 'd-flex', 'p-3', 'align-items-center', 'justify-content-center', 'd-none', 'd-md-block');
+
+  const playerClose = document.createElement('div');
+  playerClose.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+  class="bi bi-x-lg ms-2" viewBox="0 0 16 16">
+  <path
+    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+</svg>`
+
+
+  playerDiv1.appendChild(playerImage);
+  playerDiv1.appendChild(div1Div);
+  div1Div.appendChild(playerSongTitle);
+  div1Div.appendChild(playerArtist);
+  playerDiv1.appendChild(div1Buttons);
+  div1Buttons.appendChild(likeDiv);
+  div1Buttons.appendChild(hiddenPlayerPlay);
+  div1Buttons.appendChild(hiddenPlayerClose);
+  playerDiv2.appendChild(playerButtonDiv);
+  playerButtonDiv.appendChild(playerPlay);
+  playerDiv2.appendChild(staticBar);
+  staticBar.appendChild(playerBar);
+  playerBar.appendChild(audioTrack);
+  playerDiv3.appendChild(playerClose);
+  audioPlayer.appendChild(playerDiv1);
+  audioPlayer.appendChild(playerDiv2);
+  audioPlayer.appendChild(playerDiv3);
+  timerInterval = setInterval(timer, 1000);
+
+  audioTrack.play();
+
+  /**Funzione toggle play */
+  playerPlay.onclick = function () {
+
+    if (audioTrack.paused) {
+      audioTrack.play()
+      timerInterval = setInterval(timer, 1000);
+    }
+    else {
+      audioTrack.pause()
+      clearInterval(timerInterval)
+    }
+
+  }
+
+  hiddenPlayerPlay.onclick = function () {
+
+    if (audioTrack.paused) {
+      audioTrack.play()
+      timerInterval = setInterval(timer, 1000);
+    }
+    else {
+      audioTrack.pause()
+      clearInterval(timerInterval)
+    }
+
+  }
+
+  /**Funzione close playbar */
+  playerClose.onclick = function () {
+    audioPlayer.innerHTML = '';
+  }
+  hiddenPlayerClose.onclick = function () {
+    audioPlayer.innerHTML = '';
+  }
+}
+
+/**Funzione Timer */
+let i = -1;
+let timerInterval;
+function timer() {
+  i++;
+  const total = 29;
+  const percent = (i / total) * 100;
+  playerBar.style.display = 'block';
+  playerBar.style.width = `${percent}%`;
+
+  if (i >= total) {
+    clearInterval(timerInterval);
+  }
+}
+
+function ArtistPLayer(data){
+  console.log(data)
+  audioPlayer.innerHTML = '';
+    i = -1;
+    displayAudioPlayer(data);
+}
+var isFollowing = false;
+
+function toggleFollow() {
+  var followElements = document.getElementsByClassName('follow');
+  for (var i = 0; i < followElements.length; i++) {
+    var follow = followElements[i];
+    if (isFollowing) {
+      follow.innerHTML = 'FOLLOW';
+    } else {
+      follow.innerHTML = 'FOLLOWING';
+    }
+  }
+  isFollowing = !isFollowing;
+}
