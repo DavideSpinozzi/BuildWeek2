@@ -86,15 +86,24 @@
       </div>
 
     </div>
-    <div class="col-12 col-md-10 col-lg-8 text-white MainContent">
+    <div class="col-12 col-md-10 col-lg-8 text-white MainContent py-5">
       <div>
-        <div class="d-flex justify-content-between d-none d-md-block">
-          <div>
-            <button></button>
-            <button></button>
-          </div>
-          <button></button>
-        </div>
+        <div class="barraUtente py-3">
+          <div class="ps-2">
+            <svg xmlns="http://www.w3.org/2000/svg" onclick="goBack()" width='30' height="30" class="ionicon frecciaSinistra" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon opacity-50 frecciaDestra" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z"/></svg> 
+            </div>
+            <div class="dropdown profilo">
+            <button type="button" class="rounded-5 btn bg-black text-white ps-0 py-0 dropdown-toggle" data-bs-toggle="dropdown">
+              <img src="assets/imgs/friends/awdawd.jpg" alt="gatto1" width="25" height="25"
+              class="rounded-circle me-2">Paperino</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            </div>
         <div id="songContainer"></div>
         <div class="d-flex justify-content-between align-items-center">
           <h2 class="fs-1">Buonasera</h2>

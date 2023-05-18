@@ -161,4 +161,3 @@ function displayPlayList(items) {
 window.onload = function () {
   displayPlayList(playlistNames);
 };
-
