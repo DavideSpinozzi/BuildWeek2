@@ -304,12 +304,13 @@ function displayFavouriteSongs1(songs) {
 
     const songName = document.createElement("p");
     songName.textContent = song.title;
-    songName.classList.add('favSongName', 'd-md-none');
+    songName.classList.add('favSongName');
 
     const artistAnchor = document.createElement("a");
     const artistName = document.createElement("p");
     artistName.textContent = song.artist.name;
     artistAnchor.href = "./artist.html?artistId=" + song.artist.id;
+    artistName.classList.add('d-md-none')
 
 
     const favListRow = document.createElement("div");
@@ -512,16 +513,28 @@ let i = -1;
 let timerInterval;
 function timer() {
   i++;
-  const max = 29;
-  const fraction = (i / max) * 100;
+  const total = 29;
+  const percent = (i / total) * 100;
   playerBar.style.display = 'block';
-  playerBar.style.width = `${fraction}%`;
+  playerBar.style.width = `${percent}%`;
 
-  if (i >= max) {
+  if (i >= total) {
     clearInterval(timerInterval);
   }
 }
 
+/* non so perché non funziona!
 
+let svg = document.querySelectorAll('svg');
+console.log(svg);
+svg.forEach((element) => {
+  element.addEventListener('click', function(){
+    if (element.style.fill = 'currentColor'){
+    element.style.fill = 'green';
+  } else if (element.style.fill = 'green') {
+    element.style.fill = 'currentColor';
+  }
+  })
+})
 
-
+*/

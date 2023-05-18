@@ -161,6 +161,7 @@
   overflow-y: auto;
   background-color: #121212;
   padding: 1em;
+  overflow-x: hidden;
 }
 
 .MainContent::-webkit-scrollbar {
@@ -182,11 +183,6 @@
 .playListSongImage {
   max-width: 80%;
   border-radius: 3px 0 0 3px;
-}
-@media (min-width: 766px) {
-  .playListSongImage {
-    max-width: 100%;
-  }
 }
 
 .mainSongImage {
@@ -277,10 +273,12 @@ button:hover {
   border: none;
   color: white;
 }
-.mainSongCard p:hover,
 .mainSongCard h1:hover,
 .mainSongCard button:hover {
   color: gray;
+}
+.mainSongCard h1:hover {
+  cursor: pointer;
 }
 
 .mainSongInfoDiv {
@@ -307,6 +305,7 @@ button:hover {
 }
 .playListRow p:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .favListRow {
@@ -350,29 +349,6 @@ button:hover {
 
 .nBrani {
   margin: 0 1em 0 0;
-}
-
-.MainContent {
-  height: 100vh;
-  overflow-y: auto;
-  background-color: #121212;
-  padding: 1em;
-}
-
-.MainContent::-webkit-scrollbar {
-  width: 10px;
-}
-
-.MainContent::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.MainContent::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.MainContent::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
 
 .cardinia {
@@ -475,11 +451,6 @@ button:hover {
   z-index: 2;
   position: fixed;
   width: 65%;
-}
-
-.MainContent {
-  overflow-x: hidden;
-  background: linear-gradient(to bottom, #333333, #0c0c0c);
 }
 
 .vedoNonVedo {
