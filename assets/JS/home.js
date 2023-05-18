@@ -524,7 +524,7 @@ function timer() {
 }
 
 
-
+/**Funzione Toggle Svg */
 let svg = document.querySelectorAll('svg');
 console.log(svg);
 svg.forEach((element) => {
