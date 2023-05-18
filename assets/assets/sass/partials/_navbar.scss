@@ -13,7 +13,7 @@
 }
 .playlistSalvate {
   overflow-y: auto;
-  max-height: 50%;
+  max-height: 60%;
 }
 .playlistSalvate::-webkit-scrollbar {
   width: 10px;
@@ -98,42 +98,36 @@
 
 @media (max-height: 1060px) {
   .playlistSalvate{
-    max-height: 50%;
+    max-height: 40%;
   }
 }
 @media (max-height: 950px){
   .playlistSalvate{
-    max-height: 45%;
+    max-height: 35%;
   }
   
 }
 @media (max-height: 850px){
   .playlistSalvate{
-    max-height: 40%;
+    max-height: 24%;
   }
   
 }
 @media (max-height: 750px){
   .playlistSalvate{
-    max-height: 32%;
+    max-height: 20%;
   }
   
 }
 @media (max-height: 650px){
   .playlistSalvate{
-    max-height: 23%;
+    max-height: 10%;
   }
   
 }
 @media (max-height: 550px){
   .playlistSalvate{
-    max-height: 18%;
-  }
-  
-}
-@media (max-height: 450px){
-  .playlistSalvate{
-    max-height: 10%;
+    display: none !important;
   }
   
 }
