@@ -545,6 +545,11 @@ svg.forEach((element) => {
   })
 })
 
+function svgToggle() {
+  element.addEventListener('click', function(){
+    element.classList.toggle('svgGreen');
+})
+}
 /**Funzione modale */
 searchButton.onclick = function() {
   modal.style.display = "block";
@@ -562,3 +567,4 @@ modalButton.onclick = function() {
     
   window.location.href = "./search.html?searchPar=" + searchInput.value;
 }
+
