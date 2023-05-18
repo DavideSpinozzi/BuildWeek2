@@ -43,8 +43,39 @@
 .vedoNonVedo{
     display: none;
 }
-
+#MainContentArtist{
+  background: linear-gradient(to bottom, #333333 ,#0c0c0c);
+}
+.TrackHover:hover{
+  background-color: #4d4d4d;
+  .indiceTracks{
+    display: none !important;
+  }
+  .playHoverTrack{
+    display: flex !important;
+  }
+  .cuoreHover{
+    display: inline !important;
+  }
+}
+.cuoreRelative{
+  position: relative;
+}
+.cuoreAbsolute{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.follow:hover{
+  background-color: #4b4b4b;
+}
+.playButtonHover:hover{
+  transform: scale(1.1);
+}
 @media (max-width: 766px) {
+  .cuoreAbsolute{
+    right: 40px;
+  }
     .frecciaSinistra{
         width: 60px;
         height: 60px;
@@ -63,3 +94,13 @@
     }
 }
 
+@media (min-width: 2000px) {
+  .cuoreAbsolute{
+    right: 20px;
+  }
+}
+@media (max-width: 630px) {
+  .cuoreAbsolute{
+    right: 20px;
+  }
+}

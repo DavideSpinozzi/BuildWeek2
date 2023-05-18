@@ -95,13 +95,44 @@
   top: 0;
 }
 
-@media (max-width: 1060px) {
+@media (max-height: 1060px) {
+  .playlistSalvate{
+    max-height: 50%;
+  }
+}
+@media (max-height: 950px){
+  .playlistSalvate{
+    max-height: 45%;
+  }
+  
+}
+@media (max-height: 850px){
   .playlistSalvate{
     max-height: 40%;
   }
+  
 }
-@media (max-width: 950px){
+@media (max-height: 750px){
   .playlistSalvate{
-    max-height: 30%;
+    max-height: 32%;
   }
+  
+}
+@media (max-height: 650px){
+  .playlistSalvate{
+    max-height: 23%;
+  }
+  
+}
+@media (max-height: 550px){
+  .playlistSalvate{
+    max-height: 18%;
+  }
+  
+}
+@media (max-height: 450px){
+  .playlistSalvate{
+    max-height: 10%;
+  }
+  
 }
