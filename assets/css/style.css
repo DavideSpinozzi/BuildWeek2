@@ -183,6 +183,7 @@
   overflow-y: auto;
   background-color: #121212;
   padding: 1em;
+  overflow-x: hidden;
 }
 
 .MainContent::-webkit-scrollbar {
@@ -202,7 +203,7 @@
 }
 
 .playListSongImage {
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 3px 0 0 3px;
 }
 
@@ -284,7 +285,7 @@ button:hover {
 }
 @media (min-width: 766px) {
   .favListCard {
-    padding: 0.5em;
+    padding: 0.7em;
     background-color: #0e0d0d;
   }
 }
@@ -294,10 +295,12 @@ button:hover {
   border: none;
   color: white;
 }
-.mainSongCard p:hover,
 .mainSongCard h1:hover,
 .mainSongCard button:hover {
   color: gray;
+}
+.mainSongCard h1:hover {
+  cursor: pointer;
 }
 
 .mainSongInfoDiv {
@@ -324,6 +327,7 @@ button:hover {
 }
 .playListRow p:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .favListRow {
@@ -370,27 +374,8 @@ button:hover {
   margin: 0 1em 0 0;
 }
 
-.MainContent {
-  height: 100vh;
-  overflow-y: auto;
-  background-color: #121212;
-  padding: 1em;
-}
-
-.MainContent::-webkit-scrollbar {
-  width: 10px;
-}
-
-.MainContent::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.MainContent::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.MainContent::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.svgGreen {
+  fill: #1ed760;
 }
 
 .cardinia {
@@ -495,11 +480,6 @@ button:hover {
   width: 65%;
 }
 
-.MainContent {
-  overflow-x: hidden;
-  background: linear-gradient(to bottom, #333333, #0c0c0c);
-}
-
 .vedoNonVedo {
   display: none;
 }
@@ -526,12 +506,24 @@ button:hover {
   width: 100%;
   background-color: #0e0d0d;
   color: white;
+  position: fixed;
+  z-index: 1;
+  bottom: 90px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+@media (min-width: 766px) {
+  #audioPlayer {
+    bottom: 0;
+  }
 }
 
 .staticBar {
   width: 80%;
   height: 2px;
   background-color: gray;
+  margin: auto;
 }
 
 .playerBar {
@@ -544,6 +536,41 @@ button:hover {
 
 .playerPlay {
   width: 2em;
+}
+
+.playerImage {
+  width: 20%;
+}
+
+.div1Div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.div1Div p, .div1Div h5 {
+  margin: 0;
+}
+@media (min-width: 766px) {
+  .div1Div {
+    font-size: 0.7em;
+  }
+}
+
+.playerDiv1 {
+  padding: 0.6em 0 0.6em 0.6em;
+  justify-content: center;
+}
+@media (min-width: 766px) {
+  .playerDiv1 {
+    justify-content: unset;
+  }
+}
+
+body, html {
+  height: 100%;
 }
 
 body {

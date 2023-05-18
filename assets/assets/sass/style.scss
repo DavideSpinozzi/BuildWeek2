@@ -5,7 +5,9 @@
 @import '../sass/partials/artist';
 @import '../sass/partials/audioPlayer';
 
-
+body, html {
+  height: 100%;
+}
 body {
     font-family: "Circular";
 }
