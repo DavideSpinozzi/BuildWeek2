@@ -39,7 +39,12 @@ const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
 const favouriteContainer2 = document.getElementById("favouriteContainer2");
 const indexArray = [];
-const audioPlayer = document.getElementById('audioPlayer')
+const audioPlayer = document.getElementById('audioPlayer');
+const searchButton = document.getElementById('searchButton');
+const modal = document.getElementById("infoModal");
+const span = document.getElementsByClassName("close")[(0)];
+const searchInput = document.getElementById("searchInput");
+const modalButton = document.getElementById("modalButton");
 
 /**Funzione onload */
 window.onload = function () {
@@ -522,7 +527,7 @@ function timer() {
     clearInterval(timerInterval);
   }
 }
-
+/**Funzioni navigazione tra pagine */
 function goHome(){
   window.location ='home.html'
 }
@@ -540,3 +545,20 @@ svg.forEach((element) => {
   })
 })
 
+/**Funzione modale */
+searchButton.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function () {
+  modal.style.display = "none";
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+/**Funzione search button */
+modalButton.onclick = function() {
+    
+  window.location.href = "./search.html?searchPar=" + searchInput.value;
+}
