@@ -351,6 +351,10 @@ button:hover {
   margin: 0 1em 0 0;
 }
 
+.svgGreen {
+  fill: #1ed760;
+}
+
 .cardinia {
   background-color: transparent;
   border: 0;

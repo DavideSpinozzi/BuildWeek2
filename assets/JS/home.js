@@ -87,7 +87,7 @@ function displaySong(songs) {
   playListImageCol.classList.add("col-4", 'd-flex', 'align-items-center');
 
   const songImage = document.createElement("img");
-  songImage.src = song.album.cover_medium;
+  songImage.src = song.album.cover_xl;
   songImage.alt = song.title_short;
   songImage.classList.add("mainSongImage", "card-image-left");
 
@@ -208,7 +208,7 @@ function displayPlayListSongs(songs) {
     playListImageCol.classList.add("col-5");
 
     const songImage = document.createElement("img");
-    songImage.src = song.album.cover;
+    songImage.src = song.album.cover_xl;
     songImage.alt = song.title_short;
     songImage.classList.add("playListSongImage", "card-image-left");
 
@@ -287,7 +287,7 @@ function displayFavouriteSongs1(songs) {
     playListImageCol.classList.add("col-6", 'col-md-12');
 
     const songImage = document.createElement("img");
-    songImage.src = song.album.cover_medium;
+    songImage.src = song.album.cover_xl;
     songImage.alt = song.title_short;
     songImage.classList.add("favListSongImage", "card-image-left");
 
@@ -388,7 +388,7 @@ function displayAudioPlayer(song) {
   playerDiv1.classList.add('col-12', 'col-md-2', 'd-flex', 'playerDiv1', 'align-items-center')
 
   const playerImage = document.createElement('img');
-  playerImage.src = song.album.cover_small;
+  playerImage.src = song.album.cover_xl;
   playerImage.alt = song.title_short;
   playerImage.classList.add('playerImage', 'me-2', 'd-none', 'd-md-block');
 
@@ -523,18 +523,13 @@ function timer() {
   }
 }
 
-/* non so perché non funziona!
+
 
 let svg = document.querySelectorAll('svg');
 console.log(svg);
 svg.forEach((element) => {
   element.addEventListener('click', function(){
-    if (element.style.fill = 'currentColor'){
-    element.style.fill = 'green';
-  } else if (element.style.fill = 'green') {
-    element.style.fill = 'currentColor';
-  }
+    element.classList.toggle('svgGreen');
   })
 })
 
-*/
