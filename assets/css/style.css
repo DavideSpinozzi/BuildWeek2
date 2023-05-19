@@ -67,6 +67,15 @@
 .NavbarContainer {
   max-height: 100vh;
   z-index: 1;
+  font-size: 0.8rem;
+}
+
+.CuoreB {
+  background: linear-gradient(146deg, rgb(53, 47, 154) 0%, rgb(47, 49, 57) 50%, rgb(113, 177, 190) 100%);
+}
+
+.Bookmark {
+  background-color: rgb(27, 77, 27);
 }
 
 .NavbarContainer svg:hover {
@@ -150,6 +159,8 @@
     width: 100% !important;
     position: fixed;
     bottom: 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
   }
   .NavbarContainer div {
@@ -615,6 +626,10 @@ button:hover {
   background-color: #4b4b4b;
 }
 
+.playButtonHover {
+  background-color: #1ED760;
+}
+
 .playButtonHover:hover {
   transform: scale(1.1);
 }
@@ -651,6 +666,15 @@ button:hover {
     right: 20px;
   }
 }
+@media (max-width: 990px) {
+  .barraUtente {
+    width: 80%;
+  }
+}
+.green {
+  color: #1ED760 !important;
+}
+
 #audioPlayer {
   width: 100%;
   background-color: #0e0d0d;
