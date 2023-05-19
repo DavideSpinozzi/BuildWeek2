@@ -183,6 +183,11 @@
   top: 0;
 }
 
+@media (max-height: 1200px) {
+  .playlistSalvate {
+    max-height: 45%;
+  }
+}
 @media (max-height: 1060px) {
   .playlistSalvate {
     max-height: 40%;

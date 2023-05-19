@@ -605,3 +605,10 @@ modalButton.onclick = function () {
   window.location.href = "./search.html?searchPar=" + searchInput.value;
 }
 
+function toggleGreen(ok){
+  if (ok.classList.contains("green")) {
+    ok.classList.remove("green");
+  } else {
+    ok.classList.add("green");
+  }
+}

@@ -324,31 +324,32 @@ function displayAudioPlayer(data) {
 
   audioTrack.play();
 
-  /**Funzione toggle play */
+ /*Funzione toggle play**/
   playerPlay.onclick = function () {
-
     if (audioTrack.paused) {
       audioTrack.play()
       timerInterval = setInterval(timer, 1000);
+      playerPlay.src = './assets/imgs/play-circle-fill.svg'
     }
     else {
       audioTrack.pause()
       clearInterval(timerInterval)
+      playerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
     }
 
   }
 
   hiddenPlayerPlay.onclick = function () {
-
     if (audioTrack.paused) {
       audioTrack.play()
       timerInterval = setInterval(timer, 1000);
+      hiddenPlayerPlay.src = './assets/imgs/play-circle-fill.svg'
     }
     else {
       audioTrack.pause()
       clearInterval(timerInterval)
+      hiddenPlayerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
     }
-
   }
 
   /**Funzione close playbar */
