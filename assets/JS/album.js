@@ -356,3 +356,9 @@ function playerPut(data) {
   console.log(data);
 }
 
+function goHome(){
+  window.location ='home.html'
+}
+function goBack(){
+  window.history.back();
+}

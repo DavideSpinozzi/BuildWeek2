@@ -3,7 +3,7 @@ const artistId = artist.get("artistId");
 const mainContent = document.querySelector(".MainContent");
 const trackDiv = document.getElementById('tracksX5');
 let globalData;
-let bo
+let globalPlayData;
 
 const playlistNames = [
   "Be The Young Seasons 1-5",
@@ -62,8 +62,19 @@ window.onload = () => {
         throw new Error("errore");
       }
     })
+    
     .then((data) => {
       console.log(data);
+      //fecth per la canzone sul button
+      fetch(data.tracklist)
+      .then((res) => {
+          return res.json();
+      })
+      .then((data)=>{
+        globalPlayData= data.data[0]
+        console.log(globalPlayData)
+      })
+      //
       const contenuti = `
       <div id='backgroundRelative'>
   <div id='backgroundImage'>
@@ -99,7 +110,7 @@ window.onload = () => {
 </div>
 </div>
   </div>
-  <div class='playFollow d-flex align-items-center p-5 pb-0'><svg xmlns="http://www.w3.org/2000/svg" onclick='ArtistPLayer(${bo})'width="70" height="70" fill="currentColor" class="bi bi-play-circle-fill me-4 text-success playButtonHover" viewBox="0 0 16 16">
+  <div class='playFollow d-flex align-items-center p-5 pb-0'><svg xmlns="http://www.w3.org/2000/svg" onclick='ArtistPlayer(globalPlayData)' width="70" height="70" fill="currentColor" class="bi bi-play-circle-fill me-4 text-success playButtonHover" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
 </svg>
 <p class='m-0 px-3 py-1 border rounded-1 me-4 follow' onclick="toggleFollow()">FOLLOW</p>
@@ -153,15 +164,14 @@ window.onload = () => {
     globalData= data
     console.log(globalData.data);
     for(let i=0; i<data.data.length; i++){
-      bo= data.data[0];
       const p = `
     <div class='row d-flex TrackHover pt-3'>
-      <p class='col-1 d-flex justify-content-center align-items-center text-secondary indiceTracks' onclick="ArtistPLayer(globalData.data[${i}])">${i+1}</p>
-      <p class='col-1 d-none justify-content-center align-items-center text-secondary playHoverTrack' onclick="ArtistPLayer(globalData.data[${i}])"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+      <p class='col-1 d-flex justify-content-center align-items-center text-secondary indiceTracks' onclick="ArtistPlayer(globalData.data[${i}])">${i+1}</p>
+      <p class='col-1 d-none justify-content-center align-items-center text-secondary playHoverTrack' onclick="ArtistPlayer(globalData.data[${i}])"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
       <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
     </svg></p>
-      <p class='col-1 d-flex justify-content-center align-items-center' onclick="ArtistPLayer(globalData.data[${i}])"><img src='${data.data[i].album.cover}' width='40' height='40'></p>
-      <div class='col-8 d-md-flex justify-content-between align-items-center' onclick="ArtistPLayer(globalData.data[${i}])">
+      <p class='col-1 d-flex justify-content-center align-items-center' onclick="ArtistPlayer(globalData.data[${i}])"><img src='${data.data[i].album.cover}' width='40' height='40'></p>
+      <div class='col-8 d-md-flex justify-content-between align-items-center' onclick="ArtistPlayer(globalData.data[${i}])">
         <p class='m-0 mb-md-3'>${data.data[i].title}</p>
         <p class='text-secondary'>${data.data[i].rank}</p>
       </div>
@@ -345,7 +355,7 @@ function timer() {
   }
 }
 
-function ArtistPLayer(data){
+function ArtistPlayer(data){
   console.log(data)
   audioPlayer.innerHTML = '';
     i = -1;

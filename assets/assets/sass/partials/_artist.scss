@@ -37,7 +37,9 @@
     z-index: 2;
     position: fixed;
     width: 65%;
-    
+    .dropdown{
+      top: 0 !important;
+    }
 }
 
 .vedoNonVedo{
@@ -82,7 +84,7 @@
     }
     .frecciaSinistraHome
      
-    .frecciaDestra, .profilo, .artistaVerificato, .ascoltiMensili{
+    .artistaVerificato, .ascoltiMensili{
         display: none;
     }
     .vedoNonVedo{
