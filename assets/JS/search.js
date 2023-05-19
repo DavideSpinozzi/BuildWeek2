@@ -43,7 +43,13 @@ const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
 const favouriteContainer2 = document.getElementById("favouriteContainer2");
 const indexArray = [];
-const audioPlayer = document.getElementById('audioPlayer') 
+const audioPlayer = document.getElementById('audioPlayer')
+const searchButton = document.getElementById('searchButton');
+const modal = document.getElementById("infoModal");
+const span = document.getElementsByClassName("close")[(0)];
+const searchInput = document.getElementById("searchInput");
+const modalButton = document.getElementById("modalButton");
+const main = document.getElementById('main') 
 
 /**Funzione onload */
 window.onload = function() {
@@ -480,30 +486,31 @@ function displaySong(songs) {
   
     /**Funzione toggle play */
     playerPlay.onclick = function () {
-  
-      if (audioTrack.paused) {
-        audioTrack.play()
-        timerInterval = setInterval(timer, 1000);
+        if (audioTrack.paused) {
+          audioTrack.play()
+          timerInterval = setInterval(timer, 1000);
+          playerPlay.src = './assets/imgs/play-circle-fill.svg'
+        }
+        else {
+          audioTrack.pause()
+          clearInterval(timerInterval)
+          playerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
+        }
+    
       }
-      else {
-        audioTrack.pause()
-        clearInterval(timerInterval)
+    
+      hiddenPlayerPlay.onclick = function () {
+        if (audioTrack.paused) {
+          audioTrack.play()
+          timerInterval = setInterval(timer, 1000);
+          hiddenPlayerPlay.src = './assets/imgs/play-circle-fill.svg'
+        }
+        else {
+          audioTrack.pause()
+          clearInterval(timerInterval)
+          hiddenPlayerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
+        }
       }
-  
-    }
-  
-    hiddenPlayerPlay.onclick = function () {
-  
-      if (audioTrack.paused) {
-        audioTrack.play()
-        timerInterval = setInterval(timer, 1000);
-      }
-      else {
-        audioTrack.pause()
-        clearInterval(timerInterval)
-      }
-  
-    }
   
     /**Funzione close playbar */
     playerClose.onclick = function () {
@@ -538,11 +545,43 @@ function displaySong(songs) {
   
   
   /**Funzione Toggle Svg */
-  let svg = document.querySelectorAll('svg');
-  console.log(svg);
-  svg.forEach((element) => {
-    element.addEventListener('click', function(){
-      element.classList.toggle('svgGreen');
-    })
+let svg = document.querySelectorAll('svg');
+console.log(svg);
+svg.forEach((element) => {
+  element.addEventListener('click', function () {
+    element.classList.toggle('svgGreen');
   })
+  window.onclick = function (event) {
+    if (event.target == svg) {
+      element.classList.toggle('svgGreen');
+    }
+  };
+})
+
+function svgToggle(element) {
+  element.addEventListener('click', function () {
+    element.classList.toggle('svgGreen');
+  })
+}
+
+/**Funzione modale */
+searchButton.onclick = function () {
+  modal.style.display = "block";
+  main.classList.toggle = ''
+}
+span.onclick = function () {
+  modal.style.display = "none";
+  searchButton.classList.toggle('svgGreen')
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    searchButton.classList.toggle('svgGreen')
+  }
+};
+/**Funzione search button */
+modalButton.onclick = function () {
+
+  window.location.href = "./search.html?searchPar=" + searchInput.value;
+}
   

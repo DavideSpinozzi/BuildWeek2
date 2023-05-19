@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div class="row m-0 main">
+  <div class="row m-0 main" id="main">
     <!--Navbar Sinistra-->
     <div class="col-md-2 col-12 bg-black NavbarContainer">
       <div class="p-3">
@@ -39,8 +39,8 @@
               <p class="m-0 mt-1">Home</p>
             
           </div>
-          <div class="d-flex my-3 text-secondary" id="searchButton"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-              fill="currentColor" class="bi bi-search me-3" viewBox="0 0 16 16">
+          <div class="d-flex my-3 text-secondary" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+              fill="currentColor" class="bi bi-search me-3" viewBox="0 0 16 16" id="searchButton">
               <path
                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
@@ -218,16 +218,18 @@
 
     <!--Modals-->
     <div id="infoModal" class="modal">
-      <div class="modal-dialog">
+      <div class="modal-dialog" id="modalPosition">
         <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-          </div>
           <div class="modal-body">
-            <form action="">
+            <form>
             <label for="searchInput">Cerca</label>
             <input type="text" name="searchInput" id="searchInput">
-            <button type="button" id="modalButton">Cerca</button>
+            <button type="button" id="modalButton"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+              fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="searchButton">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg></button>
+            <span class="close">&times;</span>
             </form>
           </div>
         </div>
