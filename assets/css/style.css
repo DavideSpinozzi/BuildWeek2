@@ -75,6 +75,7 @@
 
 .NavbarContainer svg:hover {
   color: white !important;
+  cursor: pointer;
 }
 
 .NavbarContainer div:hover {
@@ -83,7 +84,7 @@
 
 .NavbarContainer p:hover {
   color: white !important;
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 .playlistSalvate {
@@ -300,6 +301,13 @@ button:hover {
   }
 }
 
+@media (min-width: 766px) {
+  .playListCard:hover {
+    box-shadow: 1px 1px 5px 1px white;
+    transform: scale(1.1);
+  }
+}
+
 .favListCard {
   background-color: #242424;
   border: 0;
@@ -311,6 +319,11 @@ button:hover {
     padding: 0.7em;
     background-color: #0e0d0d;
   }
+}
+
+.favListCard:hover {
+  box-shadow: 1px 1px 5px 1px white;
+  transform: scale(1.03);
 }
 
 .mainSongCard {
@@ -349,6 +362,21 @@ button:hover {
   color: white;
 }
 .playListRow p:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+@media (max-width: 765px) {
+  .playListRow:hover {
+    box-shadow: 1px 1px 5px 1px white;
+    transform: scale(1.1);
+  }
+}
+
+.playListRow2 {
+  color: white;
+}
+.playListRow2 p:hover {
   color: gray;
   cursor: pointer;
 }
@@ -397,10 +425,11 @@ button:hover {
   margin: 0 1em 0 0;
 }
 
+/*
 .svgGreen {
   fill: #1ed760;
 }
-
+*/
 .mainBlurred {
   opacity: 0.9;
 }
@@ -748,6 +777,11 @@ button:hover {
 .modal-content {
   background-color: black;
   color: white;
+}
+.modal-content form {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
 }
 .modal-content label {
   margin-right: 1em;

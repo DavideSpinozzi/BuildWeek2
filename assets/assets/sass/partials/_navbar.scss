@@ -9,15 +9,15 @@
 
 .NavbarContainer svg:hover{
   color :white !important;
-  
+  cursor: pointer;
 }
 .NavbarContainer div:hover{
   color :white !important;
+ 
 }
 .NavbarContainer p:hover{
   color :white !important;
-  cursor: pointer !important;
-
+  cursor: pointer;
 }
 .playlistSalvate {
   overflow-y: auto;
