@@ -45,6 +45,7 @@ const modal = document.getElementById("infoModal");
 const span = document.getElementsByClassName("close")[(0)];
 const searchInput = document.getElementById("searchInput");
 const modalButton = document.getElementById("modalButton");
+const main = document.getElementById('main')
 
 /**Funzione onload */
 window.onload = function () {
@@ -73,7 +74,11 @@ const fetchAndDisplay = function () {
       displaySong(dati.data);
       displayPlayListSongs(dati.data);
       displayFavouriteSongs1(dati.data);
-    });
+    })
+    .catch((error) =>{
+      console.log(error);
+      window.location.href = 'error.html';
+    })
 };
 
 /**Funzione display main song */
@@ -148,7 +153,11 @@ function displaySong(songs) {
         <path
           d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
         />
-      </svg>`;
+      </svg> <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>`;
 
   playListSongCard.appendChild(playListRow);
   playListRow.appendChild(playListImageCol);
@@ -285,8 +294,8 @@ function displayFavouriteSongs1(songs) {
     const playListSongCard = document.createElement("div");
     playListSongCard.classList.add("card", "favListCard", "mb-1");
 
-    const playListRow = document.createElement("div");
-    playListRow.classList.add("row", "playListRow");
+    const playListRow2 = document.createElement("div");
+    playListRow2.classList.add("row", "playListRow2");
 
     const playListImageCol = document.createElement("div");
     playListImageCol.classList.add("col-6", 'col-md-12');
@@ -344,10 +353,10 @@ function displayFavouriteSongs1(songs) {
   </svg>`;
 
     playListSongDiv.appendChild(playListSongCard);
-    playListSongCard.appendChild(playListRow);
-    playListRow.appendChild(playListImageCol);
+    playListSongCard.appendChild(playListRow2);
+    playListRow2.appendChild(playListImageCol);
     playListImageCol.appendChild(songImage);
-    playListRow.appendChild(playListInfoCol);
+    playListRow2.appendChild(playListInfoCol);
     playListInfoCol.appendChild(songInfoDiv);
     songInfoDiv.appendChild(albumAnchor);
     albumAnchor.appendChild(albumName);
@@ -538,6 +547,7 @@ function goBack() {
 
 
 /**Funzione Toggle Svg */
+/* funziona ma effetto non carino
 let svg = document.querySelectorAll('svg');
 console.log(svg);
 svg.forEach((element) => {
@@ -556,6 +566,7 @@ function svgToggle(element) {
     element.classList.toggle('svgGreen');
   })
 }
+*/
 
 /**Funzione modale */
 searchButton.onclick = function () {
@@ -564,13 +575,11 @@ searchButton.onclick = function () {
 }
 span.onclick = function () {
   modal.style.display = "none";
-  searchButton.classList.toggle('svgGreen');
   main.classList.toggle('mainBlurred');
 };
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
-    searchButton.classList.toggle('svgGreen');
     main.classList.toggle('mainBlurred')
   }
 };
@@ -579,3 +588,4 @@ modalButton.onclick = function () {
 
   window.location.href = "./search.html?searchPar=" + searchInput.value;
 }
+

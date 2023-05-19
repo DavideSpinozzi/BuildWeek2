@@ -64,6 +64,7 @@ fetch(url, {
 })
     .then((raw) => {
     return raw.json();
+    
     })
     .then((dati) => {
     console.log(dati.data);
@@ -71,7 +72,11 @@ fetch(url, {
     displayPlayListSongs(dati.data);
     displayFavouriteSongs1(dati.data);
     
-    });
+    })
+    .catch((error) =>{
+      console.log(error);
+      window.location.href = 'error.html';
+    })
 };
 
 /**Funzione display playlist */
@@ -545,6 +550,7 @@ function displaySong(songs) {
   
   
   /**Funzione Toggle Svg */
+  /*Funziona ma effetto non carino
 let svg = document.querySelectorAll('svg');
 console.log(svg);
 svg.forEach((element) => {
@@ -563,6 +569,7 @@ function svgToggle(element) {
     element.classList.toggle('svgGreen');
   })
 }
+*/
 
 /**Funzione modale */
 searchButton.onclick = function () {
@@ -571,13 +578,11 @@ searchButton.onclick = function () {
 }
 span.onclick = function () {
   modal.style.display = "none";
-  searchButton.classList.toggle('svgGreen');
   main.classList.toggle('mainBlurred');
 };
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
-    searchButton.classList.toggle('svgGreen');
     main.classList.toggle('mainBlurred')
   }
 };
