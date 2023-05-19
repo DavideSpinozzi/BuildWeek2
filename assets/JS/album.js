@@ -106,7 +106,6 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
       put.innerHTML = `<div  onclick = 'playerPut("${element.album.cover_xl}", "${element.title}","${element.artist.name}","${element.preview}","${element.album.title}")'> <div class='text-black cursor d-flex justify-content-center align-items-center p-2 rounded-circle playButtonHover' onclick='ArtistPlayer(globalPlayData)'><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
       <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
       </svg></div> </div>
-    <span class="material-symbols-outlined cursor animation p-3 onclick = 'toggleGreen(this) '">
     <span class="material-symbols-outlined cursor animation p-3" onclick = 'toggleGreen(this)'>
                         favorite
                     </span>
