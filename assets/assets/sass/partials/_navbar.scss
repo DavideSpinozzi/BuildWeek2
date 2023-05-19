@@ -1,6 +1,13 @@
 .NavbarContainer {
   max-height: 100vh;
   z-index: 1;
+  font-size: 0.8rem;
+}
+.CuoreB{
+  background: linear-gradient(146deg, rgba(53,47,154,1) 0%, rgba(47,49,57,1) 50%, rgba(113,177,190,1) 100%);
+}
+.Bookmark{
+  background-color: rgb(27, 77, 27);  
 }
 
 #Navbar {
@@ -19,6 +26,7 @@
   color :white !important;
   cursor: pointer;
 }
+
 .playlistSalvate {
   overflow-y: auto;
   max-height: 60%;

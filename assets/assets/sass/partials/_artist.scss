@@ -71,6 +71,9 @@
 .follow:hover{
   background-color: #4b4b4b;
 }
+.playButtonHover{
+  background-color: #1ED760;
+}
 .playButtonHover:hover{
   transform: scale(1.1);
 }
@@ -107,4 +110,12 @@
   .cuoreAbsolute{
     right: 20px;
   }
+}
+@media (max-width: 990px){
+  .barraUtente{
+    width: 80%;
+  }
+}
+.green {
+  color: #1ED760 !important;
 }
