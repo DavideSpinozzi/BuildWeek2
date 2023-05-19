@@ -567,18 +567,21 @@ function svgToggle(element) {
 /**Funzione modale */
 searchButton.onclick = function () {
   modal.style.display = "block";
-  main.classList.toggle = ''
+  main.classList.toggle('mainBlurred')
 }
 span.onclick = function () {
   modal.style.display = "none";
-  searchButton.classList.toggle('svgGreen')
+  searchButton.classList.toggle('svgGreen');
+  main.classList.toggle('mainBlurred');
 };
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
-    searchButton.classList.toggle('svgGreen')
+    searchButton.classList.toggle('svgGreen');
+    main.classList.toggle('mainBlurred')
   }
 };
+
 /**Funzione search button */
 modalButton.onclick = function () {
 
