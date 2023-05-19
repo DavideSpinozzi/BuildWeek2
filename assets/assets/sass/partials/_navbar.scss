@@ -2,14 +2,22 @@
   max-height: 100vh;
   z-index: 1;
 }
+
+#Navbar {
+  cursor: pointer;
+}
+
 .NavbarContainer svg:hover{
   color :white !important;
+  
 }
 .NavbarContainer div:hover{
   color :white !important;
 }
 .NavbarContainer p:hover{
   color :white !important;
+  cursor: pointer !important;
+
 }
 .playlistSalvate {
   overflow-y: auto;

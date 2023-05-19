@@ -148,3 +148,26 @@
     margin-bottom: 1rem;
   } 
 }
+
+.cursor, .shuf {
+  cursor: pointer;
+}
+
+#anim:hover {
+  background-color:  #4d4d4d;
+  cursor: pointer;
+}
+
+.shuf {
+  position: relative !important;
+  top: 20px !important;
+}
+
+.playButtonHover{
+  background-color: #1ED760;
+}
+.playButtonHover:hover{
+  transform: scale(1.1);
+}
+
+

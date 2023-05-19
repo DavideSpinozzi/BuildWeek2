@@ -1,9 +1,15 @@
 let admin = new URLSearchParams(window.location.search);
-
+const put = document.getElementById('put');
 let albumID = admin.get('albumId');
 console.log(albumID);
 const audioPlayer = document.getElementById('audioPlayer');
-let globalData;
+
+const searchButton = document.getElementById('searchButton');
+const modal = document.getElementById("infoModal");
+const span = document.getElementsByClassName("close")[(0)];
+const searchInput = document.getElementById("searchInput");
+const modalButton = document.getElementById("modalButton");
+const main = document.getElementById('main')
 
 fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
   .then((res) => {
@@ -27,6 +33,11 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
     const page = `./artist.html?artistId=${album.artist.id}`
     console.log(vediamo);
     forse.appendChild(vediamo);
+    
+    
+
+ 
+
 
 
 
@@ -69,31 +80,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
   </div>
 </div>
     `
-    const image = new Image();
-    image.src = `'${album.artist.picture}'`;
-
-    image.onload = function() {
-      const vibrant = new Vibrant(image);
-      const swatches = vibrant.swatches();
     
-      // Ottieni il colore principale
-      const color = swatches["Vibrant"].getHex();
-    
-      // Utilizza il colore per impostare lo sfondo come gradiente
-      setGradientBackground(color);
-    };
-
-    
-    function setGradientBackground(color) {
-      const gradient = `linear-gradient(to bottom right, ${color}, rgba(0, 0, 0, 0.5))`;
-      const mainContent = document.getElementById('backGround')
-      mainContent.style.background = gradient;
-    }
-    
-
-
-
-
 
     let albumContainer = document.getElementById('albumContainer');
     albumContainer.innerHTML += populate;
@@ -106,7 +93,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
 
 
     songs.forEach((element, i) => {
-
+      
 
       globalData = element;
       console.log(globalData);
@@ -114,15 +101,78 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
       const bello = `./artist.html?artistId=${element.artist.id}`
       console.log(bello);
 
+      const put = document.getElementById('put');
+
+      put.innerHTML = `<div  onclick = 'playerPut("${element.album.cover_xl}", "${element.title}","${element.artist.name}","${element.preview}","${element.album.title}")'> <div class='text-black cursor d-flex justify-content-center align-items-center p-2 rounded-circle playButtonHover' onclick='ArtistPlayer(globalPlayData)'><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+      <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+      </svg></div> </div>
+    <span class="material-symbols-outlined cursor animation p-3">
+                        favorite
+                    </span>
+                    <span class="material-symbols-outlined cursor  p-3">
+                        downloading
+                    </span>
+                    <div class="dropdown mb-3 d-none d-md-block">
+                        <svg href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-three-dots text-white" viewBox="0 0 16 16">
+                            <path
+                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                        </svg>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>`
+
+      const post = document.getElementById('post');
+      post.innerHTML = `
+      <span onclick = 'toggleGreen(this) ' class="material-symbols-outlined cursor me-2 ">
+                        favorite
+                    </span>
+                    <span class="material-symbols-outlined cursor  p-3">
+                        downloading
+                    </span>
+                    <div class="dropdown" ><svg id="bingo" xmlns="http://www.w3.org/2000/svg" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                      </svg><ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                      </div>
+                      <div class="camva d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shuffle me-3 shuf" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+                          </svg>
+                          <div  onclick = 'playerPut("${element.album.cover_xl}", "${element.title}","${element.artist.name}","${element.preview}","${element.album.title}")'>
+                          <div class='text-black cursor d-flex justify-content-center align-items-center p-2 rounded-circle playButtonHover' ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                          <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                          </svg></div>
+                          </div>
+                      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      `
+
+      
 
       const titleSong = document.getElementById('titleSong');
       titleSong.innerHTML += `
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center " id = 'anim'>
       <div>
       <p class="pincopallino greys me-3">${i + 1}</p>
       </div>
-      <div class = " d-flex flex-column">
-      <div onclick = 'playerPut(globalData)'>
+      <div class = " d-flex flex-column ">
+      <div  onclick = 'playerPut("${element.album.cover_xl}", "${element.title}","${element.artist.name}","${element.preview}","${element.album.title}")'>
        ${element.title} 
       </div>
       <div class= 'greys'>
@@ -140,19 +190,10 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
       console.log(element);
 
 
-
+      /*put.onclick = playerPut(element.album.cover_xl,element.title,element.artist.name,element.preview,element.title)*/
 
 
     })
-
-
-
-
-
-
-
-
-
 
   })
   .catch((err) => {
@@ -212,20 +253,20 @@ function displayAudioPlayer(data) {
   clearInterval(timerInterval);
   const playerDiv1 = document.createElement('div');
   playerDiv1.classList.add('col-12', 'col-md-2', 'd-flex', 'playerDiv1', 'align-items-center')
-
+console.log(data.copertina);
   const playerImage = document.createElement('img');
-  playerImage.src = data.album.cover_xl;
-  playerImage.alt = data.title_short;
+  playerImage.src = data.copertina;
+  playerImage.alt = data.titolo;
   playerImage.classList.add('playerImage', 'me-2', 'd-none', 'd-md-block');
 
   const div1Div = document.createElement('div');
   div1Div.classList.add('div1Div', 'me-4', 'me-md-2');
 
   const playerSongTitle = document.createElement('h5');
-  playerSongTitle.textContent = data.title;
+  playerSongTitle.textContent = data.titolo;
 
   const playerArtist = document.createElement('p');
-  playerArtist.textContent = data.artist.name;
+  playerArtist.textContent = data.nomeArtista;
   playerArtist.classList.add('d-none', 'd-md-block')
 
   const div1Buttons = document.createElement('div');
@@ -349,16 +390,57 @@ function timer() {
   }
 }
 
-function playerPut(data) {
+function playerPut(copertina, titolo, nomeArtista, preview, nomeAlbum) {
   audioPlayer.innerHTML = '';
   i = -1;
-  displayAudioPlayer(data);
-  console.log(data);
+  displayAudioPlayer({copertina,titolo, nomeArtista, preview, nomeAlbum});
 }
 
-function goHome(){
-  window.location ='home.html'
+
+
+/*var gradients = [
+  'linear-gradient(to top, #ff0000, #0000ff)',
+  'linear-gradient(to top, #00ff00, #ffff00)',
+  'linear-gradient(to top, #ff00ff, #00ffff)'
+  // Aggiungi altri gradienti se necessario
+];
+
+function getRandomGradient() {
+  var randomIndex = Math.floor(Math.random() * gradients.length);
+  return gradients[randomIndex];
 }
-function goBack(){
-  window.history.back();
+
+// Seleziona l'elemento su cui desideri impostare il background gradient
+var element = document.getElementById('backGround');
+
+// Assegna un gradiente casuale come background
+element.style.background = getRandomGradient();*/
+
+/*Funzione modale */
+searchButton.onclick = function () {
+  modal.style.display = "block";
+  main.classList.toggle('mainBlurred')
+}
+span.onclick = function () {
+  modal.style.display = "none";
+  main.classList.toggle('mainBlurred');
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    main.classList.toggle('mainBlurred')
+  }
+};
+/*Funzione search button */
+modalButton.onclick = function () {
+
+  window.location.href = "./search.html?searchPar=" + searchInput.value;
+}
+
+function toggleGreen(ok){
+  if (ok.classList.contains("green")) {
+    ok.classList.remove("green");
+  } else {
+    ok.classList.add("green");
+  }
 }
