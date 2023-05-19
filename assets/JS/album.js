@@ -16,17 +16,18 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
   .then((data) => {
     console.log(data);
     const album = data;
-    
+
     const minutes = Math.floor(album.duration / 60);
     const seconds = album.duration % 60;
     const ciao = album.artist.id;
     console.log(ciao);
     const forse = document.getElementById('id');
-    const vediamo = document.createElement ('a');
+    const vediamo = document.createElement('a');
     vediamo.href = "./artist.html?artistId=" + ciao;
+    const page = `./artist.html?artistId=${album.artist.id}`
     console.log(vediamo);
     forse.appendChild(vediamo);
-    
+
 
 
     vediamo.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width='30' height="30" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z"/></svg>`
@@ -42,7 +43,7 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
         <h1 class="card-title">${album.title}</h1>
         <div class="d-flex justify-content-between align-items-start iter" style="max-width:80%">
         <img src="${album.artist.picture}" class=" rounded-circle" width="10% me-5" id="profile" alt="album">
-        <p class="giovane"> ${album.artist.name} </p>
+       <a href= "${page}" <p class="giovane"> ${album.artist.name} </p> </a>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="pincopallino bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -68,6 +69,32 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
   </div>
 </div>
     `
+    const image = new Image();
+    image.src = `'${album.artist.picture}'`;
+
+    image.onload = function() {
+      const vibrant = new Vibrant(image);
+      const swatches = vibrant.swatches();
+    
+      // Ottieni il colore principale
+      const color = swatches["Vibrant"].getHex();
+    
+      // Utilizza il colore per impostare lo sfondo come gradiente
+      setGradientBackground(color);
+    };
+
+    
+    function setGradientBackground(color) {
+      const gradient = `linear-gradient(to bottom right, ${color}, rgba(0, 0, 0, 0.5))`;
+      const mainContent = document.getElementById('backGround')
+      mainContent.style.background = gradient;
+    }
+    
+
+
+
+
+
     let albumContainer = document.getElementById('albumContainer');
     albumContainer.innerHTML += populate;
 
@@ -78,23 +105,28 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
     console.log(firstSongTitle);
 
 
-    songs.forEach((element,i) => {
-        
-        
-        
-        
-          const titleSong = document.getElementById('titleSong');
-          titleSong.innerHTML += `
+    songs.forEach((element, i) => {
+
+
+      globalData = element;
+      console.log(globalData);
+
+      const bello = `./artist.html?artistId=${element.artist.id}`
+      console.log(bello);
+
+
+      const titleSong = document.getElementById('titleSong');
+      titleSong.innerHTML += `
       <div class="d-flex align-items-center">
       <div>
       <p class="pincopallino greys me-3">${i + 1}</p>
       </div>
       <div class = " d-flex flex-column">
-      <div onclick = "playerPut(${i})">
+      <div onclick = 'playerPut(globalData)'>
        ${element.title} 
       </div>
       <div class= 'greys'>
-      <a href = "./artist.html?artistId=" + ${ciao}> ${element.artist.name} </a>
+      <a href = "${bello}"> ${element.artist.name} </a>
       </div>
       </div>
       `
@@ -104,20 +136,20 @@ fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
       const minutes2 = Math.floor(element.duration / 60);
       const seconds2 = element.duration % 60;
       time.innerHTML += `<div class = 'linear ms-4'>${minutes2}: ${seconds2} </div>`
-        
+
       console.log(element);
-   
 
 
 
 
-      })
-    
-      
 
-   
+    })
 
-    
+
+
+
+
+
 
 
 
@@ -190,10 +222,10 @@ function displayAudioPlayer(data) {
   div1Div.classList.add('div1Div', 'me-4', 'me-md-2');
 
   const playerSongTitle = document.createElement('h5');
-  playerSongTitle.textContent =data.title;
+  playerSongTitle.textContent = data.title;
 
   const playerArtist = document.createElement('p');
-  playerArtist.textContent =data.artist.name;
+  playerArtist.textContent = data.artist.name;
   playerArtist.classList.add('d-none', 'd-md-block')
 
   const div1Buttons = document.createElement('div');
@@ -317,7 +349,7 @@ function timer() {
   }
 }
 
-  function playerPut (data) {
+function playerPut(data) {
   audioPlayer.innerHTML = '';
   i = -1;
   displayAudioPlayer(data);
