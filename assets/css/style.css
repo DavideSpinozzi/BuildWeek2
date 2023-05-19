@@ -165,8 +165,6 @@
     width: 100% !important;
     position: fixed;
     bottom: 0;
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
   }
   .NavbarContainer div {
@@ -376,6 +374,7 @@ button:hover {
 
 .playListRow {
   color: white;
+  border-radius: 10px;
 }
 .playListRow p:hover {
   color: gray;
@@ -385,7 +384,8 @@ button:hover {
 @media (max-width: 765px) {
   .playListRow:hover {
     box-shadow: 1px 1px 5px 1px white;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    z-index: 10;
   }
 }
 

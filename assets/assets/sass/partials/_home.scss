@@ -160,6 +160,7 @@ button:hover {
 
 .playListRow {
   color: white;
+  border-radius: 10px;
   p:hover {
     color: gray;
     cursor: pointer;
@@ -168,7 +169,8 @@ button:hover {
 .playListRow:hover {
   @media (max-width: 765px) {
     box-shadow: 1px 1px 5px 1px white;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    z-index: 10;
   }
 }
 .playListRow2 {
