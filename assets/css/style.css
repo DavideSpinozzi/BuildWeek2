@@ -400,11 +400,7 @@ button:hover {
 .cardinia .d-flex > p {
   font-size: 0.8em;
   position: relative;
-  top: 10px;
-}
-.cardinia svg {
-  position: relative;
-  top: 7px;
+  top: 5px;
 }
 .cardinia .pincopallino {
   color: rgba(255, 255, 255, 0.61);
@@ -506,7 +502,7 @@ button:hover {
 }
 
 @media screen and (min-width: 766px) {
-  .powerangers {
+  .powerangers, .compars {
     display: none !important;
   }
 }
