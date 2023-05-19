@@ -394,6 +394,7 @@ const span = document.getElementsByClassName("close")[(0)];
 const searchInput = document.getElementById("searchInput");
 const modalButton = document.getElementById("modalButton");
 const searchButton =document.getElementById("searchButton")
+const main = document.getElementById('main')
 /* Funzione modale */
 searchButton.onclick = function () {
   modal.style.display = "block";
