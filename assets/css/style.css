@@ -150,8 +150,6 @@
     width: 100% !important;
     position: fixed;
     bottom: 0;
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgb(0, 0, 0) 50%) !important;
   }
   .NavbarContainer div {
@@ -396,6 +394,10 @@ button:hover {
 
 .svgGreen {
   fill: #1ed760;
+}
+
+.mainBlurred {
+  opacity: 0.9;
 }
 
 .cardinia {
@@ -713,6 +715,44 @@ button:hover {
 @media (min-width: 766px) {
   .playerDiv1 {
     justify-content: unset;
+  }
+}
+
+.modal-content {
+  background-color: black;
+  color: white;
+}
+.modal-content label {
+  margin-right: 1em;
+}
+.modal-content input {
+  background-color: #242424;
+  color: white;
+  margin-right: 1em;
+}
+@media (min-width: 766px) {
+  .modal-content input {
+    width: 65%;
+  }
+}
+.modal-content button {
+  background-color: #242424;
+  margin-right: 1em;
+}
+.modal-content button svg {
+  width: 1.5em;
+  fill: white;
+  margin: 0;
+}
+
+#modalPosition {
+  top: 600px;
+}
+@media (min-width: 766px) {
+  #modalPosition {
+    margin-left: 0;
+    top: 60px;
+    left: 120px;
   }
 }
 

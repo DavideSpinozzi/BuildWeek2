@@ -33,7 +33,7 @@ const playlistNames = [
   "ma(ncanza) che cazzo ne so io (gen-feb 2021)",
 ];
 /**Costanti */
-const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=blues";
+const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=muddy%20waters";
 const playListDiv = document.getElementById("playListDiv");
 const songContainer = document.getElementById("songContainer");
 const favouriteContainer = document.getElementById("favouriteContainer");
@@ -473,35 +473,36 @@ function displayAudioPlayer(song) {
   audioPlayer.appendChild(playerDiv1);
   audioPlayer.appendChild(playerDiv2);
   audioPlayer.appendChild(playerDiv3);
-  timerInterval = setInterval(timer, 1000);
 
+  timerInterval = setInterval(timer, 1000);
   audioTrack.play();
 
   /**Funzione toggle play */
   playerPlay.onclick = function () {
-
     if (audioTrack.paused) {
       audioTrack.play()
       timerInterval = setInterval(timer, 1000);
+      playerPlay.src = './assets/imgs/play-circle-fill.svg'
     }
     else {
       audioTrack.pause()
       clearInterval(timerInterval)
+      playerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
     }
 
   }
 
   hiddenPlayerPlay.onclick = function () {
-
     if (audioTrack.paused) {
       audioTrack.play()
       timerInterval = setInterval(timer, 1000);
+      hiddenPlayerPlay.src = './assets/imgs/play-circle-fill.svg'
     }
     else {
       audioTrack.pause()
       clearInterval(timerInterval)
+      hiddenPlayerPlay.src = './assets/imgs/play-circle-fill-gray.svg'
     }
-
   }
 
   /**Funzione close playbar */
@@ -528,10 +529,10 @@ function timer() {
   }
 }
 /**Funzioni navigazione tra pagine */
-function goHome(){
-  window.location ='home.html'
+function goHome() {
+  window.location = 'home.html'
 }
-function goBack(){
+function goBack() {
   window.history.back();
 }
 
@@ -540,25 +541,41 @@ function goBack(){
 let svg = document.querySelectorAll('svg');
 console.log(svg);
 svg.forEach((element) => {
-  element.addEventListener('click', function(){
+  element.addEventListener('click', function () {
     element.classList.toggle('svgGreen');
   })
+  window.onclick = function (event) {
+    if (event.target == svg) {
+      element.classList.toggle('svgGreen');
+    }
+  };
 })
 
+function svgToggle(element) {
+  element.addEventListener('click', function () {
+    element.classList.toggle('svgGreen');
+  })
+}
+
 /**Funzione modale */
-searchButton.onclick = function() {
+searchButton.onclick = function () {
   modal.style.display = "block";
+  main.classList.toggle('mainBlurred')
 }
 span.onclick = function () {
   modal.style.display = "none";
+  searchButton.classList.toggle('svgGreen');
+  main.classList.toggle('mainBlurred');
 };
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    searchButton.classList.toggle('svgGreen');
+    main.classList.toggle('mainBlurred')
   }
 };
 /**Funzione search button */
-modalButton.onclick = function() {
-    
+modalButton.onclick = function () {
+
   window.location.href = "./search.html?searchPar=" + searchInput.value;
 }
